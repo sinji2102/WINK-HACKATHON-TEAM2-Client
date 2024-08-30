@@ -1,5 +1,7 @@
+import { TestWrapper } from "./Test.styled";
+
 const Test = () => {
-  return <div>test</div>;
+  return <TestWrapper>test</TestWrapper>;
 };
 
 export default Test;

@@ -13,6 +13,9 @@ const fontGenerator = (
 });
 
 const theme = {
+  colors: {
+    b01: "#000000",
+  },
   fonts: {
     heading1: fontGenerator(
       "Pretendard",
@@ -30,70 +33,70 @@ const theme = {
       "2.6rem",
       "-0.018rem"
     ),
-    "body1-normal-semi": fontGenerator(
+    body1_normal_semi: fontGenerator(
       "Pretendard",
       "1.6rem",
       "600",
       "2.4rem",
       "-0.016rem"
     ),
-    "body1-normal-medi": fontGenerator(
+    body1_normal_medi: fontGenerator(
       "Pretendard",
       "1.6rem",
       "500",
       "2.4rem",
       "-0.016rem"
     ),
-    "body1-long": fontGenerator(
+    body1_long: fontGenerator(
       "Pretendard",
       "1.6rem",
       "400",
       "2.6rem",
       "-0.016rem"
     ),
-    "body2-normal-semi": fontGenerator(
+    body2_normal_semi: fontGenerator(
       "Pretendard",
       "1.4rem",
       "600",
       "2rem",
       "-0.007rem"
     ),
-    "body2-normal-medi": fontGenerator(
+    body2_normal_medi: fontGenerator(
       "Pretendard",
       "1.4rem",
       "500",
       "2rem",
       "-0.007rem"
     ),
-    "body2-long": fontGenerator(
+    body2_long: fontGenerator(
       "Pretendard",
       "1.4rem",
       "400",
       "2.2rem",
       "-0.007rem"
     ),
-    "caption1-semi": fontGenerator(
+    caption1_semi: fontGenerator(
       "Pretendard",
       "1.2rem",
       "600",
       "1.8rem",
       "-0.03rem"
     ),
-    "caption1-medi": fontGenerator(
+    caption1_medi: fontGenerator(
       "Pretendard",
       "1.2rem",
       "500",
       "1.8rem",
       "-0.03rem"
     ),
-    "caption2-semi": fontGenerator(
+    caption2_semi: fontGenerator(
       "Pretendard",
       "1.1rem",
       "600",
       "1.6rem",
       undefined
     ),
-    "caption2-medi": fontGenerator(
+    caption2_medi: fontGenerator(
       "Pretendard",
       "1.1rem",
       "500",
