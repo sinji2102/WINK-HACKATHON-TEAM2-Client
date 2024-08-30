@@ -9,7 +9,7 @@ const global = createGlobalStyle`
     }
     html {
     font-size: 62.5%;
-    background-color: ${({ theme }) => theme.colors.black};
+    background-color: black;
     user-select: none;
     -webkit-touch-callout: none;
     -webkit-tap-highlight-color:rgb(0 0 0 / 0%);
@@ -38,13 +38,14 @@ const global = createGlobalStyle`
         outline: none;
     }
     }
+
     /* 모바일뷰 세팅 */
     body {
         width: 375px; 
         min-height: 100%;
         margin: 0 auto; 
         overflow-x: hidden;
-        background-color: ${({ theme }) => theme.colors.gray_900}; 
+        background-color: gray ;
     }
 `;
 
