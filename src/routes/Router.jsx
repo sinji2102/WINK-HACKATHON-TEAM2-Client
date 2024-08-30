@@ -4,7 +4,6 @@ const router = createBrowserRouter([
   //   {
   //     path: "/A",
   //     element: <APage />,
-  // export const router = createBrowserRouter([
   //   },
   //   ...
 ]);
