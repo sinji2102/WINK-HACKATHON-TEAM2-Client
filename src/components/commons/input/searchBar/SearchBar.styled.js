@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const SearchBarWrapper = styled.div`
   background-color: white;
+  width: 32.9rem;
   display: flex;
   padding: 1.3rem 1.2rem;
   align-items: flex-start;
