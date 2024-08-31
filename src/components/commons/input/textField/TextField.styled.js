@@ -1,4 +1,3 @@
-// import { IconTextfiedlDelete } from "@assets/svgs";
 import { Generators } from "../../../../styles/generator";
 import styled from "styled-components";
 
@@ -12,29 +11,30 @@ export const TextFieldWrapper = styled.article`
 `;
 
 export const TextFieldInput = styled.input`
-  width: 100%;
+  width: 33rem;
+  height: 5rem;
   height: ${({ $narrow }) => ($narrow ? "4.2rem" : "4.8rem")};
   padding: 0 1.6rem;
 
   color: ${({ theme, $isDisabled }) =>
-    $isDisabled ? theme.colors.gray_600 : theme.colors.gray_0};
+    $isDisabled ? theme.colors.neutral60 : theme.colors.black0};
 
-  background: ${({ theme }) => theme.colors.gray_800};
+  background: ${({ theme }) => theme.colors.white100};
   border: 1px solid transparent;
   border-radius: 0.6rem;
+
+  // TODO : border 색 추가해 주신 거로 변경하기
 
   ${({ theme }) => theme.fonts.body2_normal_medi};
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.gray_600};
+    color: ${({ theme }) => theme.colors.coolNeutral90};
   }
 
   &:focus {
-    border: 1px solid ${({ theme }) => theme.colors.gray_0};
+    border: 1px solid ${({ theme }) => theme.colors.black0};
   }
 `;
-
-// export const TextClear = styled(IconTextfiedlDelete)`
 
 export const TextClear = styled.div`
   position: absolute;
@@ -49,7 +49,7 @@ export const TextUnit = styled.p`
   position: absolute;
   right: 1.6rem;
 
-  color: ${({ theme }) => theme.colors.gray_0};
+  color: ${({ theme }) => theme.colors.black0};
   ${({ theme }) => theme.fonts.body2_normal_medi};
 `;
 
@@ -67,7 +67,7 @@ export const TextCap = styled.p`
   margin: 0;
   margin-top: 0.6rem;
 
-  color: ${({ theme }) => theme.colors.gray_500};
+  color: ${({ theme }) => theme.colors.coolNeutral90};
   text-align: right;
   ${({ theme }) => theme.fonts.body2_normal_medi};
 `;

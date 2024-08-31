@@ -29,6 +29,8 @@ const Test = () => {
         placeholder="테스트입니당"
         name="test"
         type="input"
+        maxLength={10}
+        cap={true}
       />
     </TestWrapper>
   );

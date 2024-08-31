@@ -24,7 +24,7 @@ export const TextAreaInput = styled.textarea`
   ${({ theme }) => theme.fonts.body2_long};
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.gray_600};
+    color: ${({ theme }) => theme.colors.neutral90};
   }
 
   &:focus {
@@ -43,7 +43,7 @@ export const TextCap = styled.p`
   margin: 0;
   margin-top: 0.6rem;
 
-  color: ${({ theme }) => theme.colors.gray_500};
+  color: ${({ theme }) => theme.colors.coolNeutral90};
   text-align: right;
   ${({ theme }) => theme.fonts.body2_normal_medi};
 `;
