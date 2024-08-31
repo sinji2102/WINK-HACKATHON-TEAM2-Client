@@ -68,7 +68,7 @@ const Register = () => {
         <S.GraphWrapper key={idx}>
           <S.CircleContainer>
             <S.DashedLine>
-              <S.AddCircle />
+              <S.Circle $color={item.colorType} />
             </S.DashedLine>
           </S.CircleContainer>
         </S.GraphWrapper>

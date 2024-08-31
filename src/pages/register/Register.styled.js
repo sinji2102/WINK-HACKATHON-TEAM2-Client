@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const RegisterWrapper = styled.section`
   display: flex;
@@ -54,4 +54,36 @@ export const AddCircle = styled.button`
 
   fill: var(--lime-90, #ccfca9);
   filter: blur(2px);
+`;
+
+const color = {
+  빨강: "red60",
+  주황: "orange60",
+  연두: "lime60",
+  파랑: "cyan60",
+  보라: "purple60",
+};
+
+export const Circle = styled.div`
+  position: absolute;
+  top: 3.2rem;
+  left: -1.75rem;
+  width: 3rem;
+  height: 3rem;
+
+  /* background-color: ${({ theme }) => theme.colors.lime90}; */
+  border-radius: 50%;
+
+  fill: var(--lime-90, #ccfca9);
+  filter: blur(2px);
+
+  ${({ $color, theme }) => {
+    const colorName = `${color}60`;
+
+    const backgroundColor = theme.colors[colorName];
+
+    return css`
+      background-color: ${backgroundColor};
+    `;
+  }}
 `;
