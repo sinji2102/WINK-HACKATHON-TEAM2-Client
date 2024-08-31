@@ -52,7 +52,7 @@ const GlobalStyle = createGlobalStyle`
       min-height: 100%;
       margin: 0 auto;
       overflow-x: hidden;
-      background-color: gray;
+      background-color: #FFFFF7;
     }
   }
   
@@ -62,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
       min-height: 100%;
       margin: 0 auto;
       overflow-x: hidden;
-      background-color: gray;
+      background-color: #FFFFF7;
     }
   }
 `;
