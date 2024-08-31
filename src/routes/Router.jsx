@@ -3,6 +3,7 @@ import Test from "../pages/test/Test.jsx";
 import Register from "../pages/register/Register.jsx";
 import Main from "../pages/main/Main.jsx";
 import SearchResult from "../pages/searchResult/SearchResult.jsx";
+import Login from "../pages/login/Login.jsx";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
   {
     path: "/search/:query",
