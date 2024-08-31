@@ -10,6 +10,21 @@ export const MainWrapper = styled.div`
   gap: 1rem;
 `;
 
+export const FloatingWrapper = styled.button`
+  width: 7rem;
+  height: 7rem;
+  border-radius: 100%;
+  background-color: ${({ theme }) => theme.colors.lime50};
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  bottom: 0;
+  right: 0;
+  transform: translate(180%, -50%);
+`
+
 export const CarouselWrapper = styled.div`
   width: 32rem;
   height: 15rem;

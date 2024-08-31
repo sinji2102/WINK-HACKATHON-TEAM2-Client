@@ -1,73 +1,110 @@
 import Header from "../../components/header/Header.jsx";
 import {
   CircleContainer,
-  DashedLine, DescriptionContainer,
+  DashedLine,
+  DescriptionContainer,
   DescriptionWrapper,
-  DetailWrapper, GraphContainer, InfoContainer,
-  LineCircleContainer, NormalSemiText,
-  StickyWrapper, ViewUserContainer
+  DetailWrapper,
+  GraphContainer,
+  InfoContainer,
+  LineCircleContainer,
+  NormalSemiText,
+  StickyWrapper,
+  ViewUserContainer,
 } from "./Detail.styled.js";
 import GraphCircle from "./components/GraphCircle.jsx";
-import {Divider} from "../register/Register.styled.js";
-import {useEffect, useState} from "react";
+import { Divider } from "../register/Register.styled.js";
+import { useEffect, useState } from "react";
+import {privateAxios} from "../../apis/axiosInstance.js";
+import {useNavigate, useParams} from "react-router-dom";
 
-const graphDemo =
-  {
-    title: '테스트',
-    author: '이정욱',
-    viewCount: 97,
-    summary: '이 텍스트는 한 줄 요약을 위한 텍스트입니다. 아얾ㄷ;ㅓㄹ;ㅑㅐㅁㄹ먿ㄹㅁㄷ럄ㄷㄹ;먀ㅐㅓㄹㄷㅁㅁㄷ랴ㅐㅇㅇㅇㅇㅇ',
-    circles: [
-      {
-        title: "test",
-        date: '2024년 9월 1일',
-        color: 'lime',
-        level: 5,
-      },
-      {
-        title: "test",
-        date: '2024년 9월 1일',
-        color: 'lime',
-        level: 4,
-      },
-      {
-        title: "test",
-        date: '2024년 9월 1일',
-        color: 'lime',
-        level: 2,
-      },
-      {
-        title: "test",
-        date: '2024년 9월 1일',
-        color: 'lime',
-        level: 1,
-      },
-      {
-        title: "test",
-        date: '2024년 9월 1일',
-        color: 'lime',
-        level: 4,
-      },
-      {
-        title: "test",
-        date: '2024년 9월 1일',
-        color: 'lime',
-        level: 3,
-      },
-      {
-        title: "test",
-        date: '2024년 9월 1일',
-        color: 'lime',
-        level: 2,
-      },
-    ]
-  };
+const graphDemo = {
+  title: "테스트",
+  author: "이정욱",
+  viewCount: 97,
+  summary:
+    "이 텍스트는 한 줄 요약을 위한 텍스트입니다. 아얾ㄷ;ㅓㄹ;ㅑㅐㅁㄹ먿ㄹㅁㄷ럄ㄷㄹ;먀ㅐㅓㄹㄷㅁㅁㄷ랴ㅐㅇㅇㅇㅇㅇ",
+  circles: [
+    {
+      title: "test",
+      date: "2024년 9월 1일",
+      color: "lime",
+      level: 5,
+    },
+    {
+      title: "test",
+      date: "2024년 9월 1일",
+      color: "lime",
+      level: 4,
+    },
+    {
+      title: "test",
+      date: "2024년 9월 1일",
+      color: "lime",
+      level: 2,
+    },
+    {
+      title: "test",
+      date: "2024년 9월 1일",
+      color: "lime",
+      level: 1,
+    },
+    {
+      title: "test",
+      date: "2024년 9월 1일",
+      color: "lime",
+      level: 4,
+    },
+    {
+      title: "test",
+      date: "2024년 9월 1일",
+      color: "lime",
+      level: 3,
+    },
+    {
+      title: "test",
+      date: "2024년 9월 1일",
+      color: "lime",
+      level: 2,
+    },
+  ],
+};
 
 export const Detail = () => {
+  const params = useParams();
+  const navigate = useNavigate();
   const [lifeGraph, setLifeGraph] = useState(graphDemo);
 
   useEffect(() => {
-    setLifeGraph(graphDemo);
+    privateAxios.get(`/loadmap/${params.id}`)
+      .then((response) => {
+        if (!response.data.loadmapAndColor || !response.data.loadmapCircleList) {
+          navigate('/');
+          return;
+        }
+
+        const graphData = response.data.loadmapAndColor.loadmapDto;
+        const circleData = response.data.loadmapCircleList;
+        const circles = circleData.map((circle) => {
+          return (
+            {
+              title: circle.title,
+              date: circle.date,
+              color: circle.colorType,
+              level: circle.level,
+            }
+          );
+        })
+        const graph = {
+          title: graphData.title,
+          author: graphData.user_name,
+          viewCount: graphData.view,
+          summary: graphData.summary,
+          circles: circles,
+        }
+
+        setLifeGraph(graph);
+      });
   }, []);
 
   return (
@@ -77,11 +114,11 @@ export const Detail = () => {
         <DescriptionWrapper>
           <InfoContainer>
             <ViewUserContainer>
-              <img src={'assets/svgs/user.svg'} alt={'user'} />
+              <img src='/assets/svgs/user.svg' alt={"user"} />
               <NormalSemiText>{lifeGraph.author}</NormalSemiText>
             </ViewUserContainer>
             <ViewUserContainer>
-              <img src={'assets/svgs/view.svg'} alt={'view'}/>
+              <img src='/assets/svgs/view.svg' alt={"view"} />
               <NormalSemiText>{lifeGraph.viewCount.toString()}</NormalSemiText>
             </ViewUserContainer>
           </InfoContainer>
@@ -89,19 +126,23 @@ export const Detail = () => {
             <NormalSemiText>{lifeGraph.summary}</NormalSemiText>
           </DescriptionContainer>
         </DescriptionWrapper>
-        <Divider/>
+        <Divider />
       </StickyWrapper>
       <GraphContainer>
-        {
-          lifeGraph.circles.map((circle, index) => (
-            <LineCircleContainer key={index}>
-              <DashedLine />
-              <CircleContainer $level={circle.level}>
-                <GraphCircle title={circle.title} date={circle.date} color={circle.color} level={circle.level}/>
-              </CircleContainer>
-            </LineCircleContainer>
-          ))
-        }
+        {lifeGraph.circles.map((circle, index) => (
+          <LineCircleContainer key={index}>
+            <DashedLine />
+            <CircleContainer $level={circle.level}>
+              <GraphCircle
+                title={circle.title}
+                date={circle.date}
+                color={circle.color}
+                level={circle.level}
+                idx={index}
+              />
+            </CircleContainer>
+          </LineCircleContainer>
+        ))}
       </GraphContainer>
     </DetailWrapper>
   );
