@@ -33,7 +33,7 @@ const router = createBrowserRouter([
     element: <KakaoCallback />,
   },
   {
-    path: '/detail',
+    path: '/detail/:id',
     element: <Detail />
   }
 ]);
