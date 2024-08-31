@@ -15,7 +15,7 @@ import {privateAxios} from "../../apis/axiosInstance.js";
 
 const Main = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('테스트');
+  const [username, setUsername] = useState('');
   const [lifeGraphs, setLifeGraphs] = useState([]);
 
   const handleLogout = () => {
@@ -86,6 +86,7 @@ const Main = () => {
             lifeGraphs.map((data, index) => (
               <LifeGraphCard
                 key={index}
+                id={data.id}
                 title={data.title}
                 author={data.author}
                 primaryColor={data.primaryColor}
