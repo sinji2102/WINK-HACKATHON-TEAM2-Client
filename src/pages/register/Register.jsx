@@ -35,15 +35,14 @@ const Register = () => {
     setAnimation((prev) => !prev);
   };
 
-  // TODO: 지금 바로 반영 안 되니까 비동기 처리해서 바로 반영될 수 있도록 하기
   const addCircleHandler = (value) => {
-    setCircleInfo({ ...value, level: currLevel });
-    console.log("Updated Circle Info:", { ...value, level: currLevel });
-    const formData = allCircle;
-    formData.push(circleInfo);
-    setAllCircle(formData);
+    const updatedCircleInfo = { ...value, level: currLevel };
+    setCircleInfo(updatedCircleInfo);
 
-    console.log(allCircle);
+    setAllCircle((prevCircles) => {
+      const newCircles = [...prevCircles, updatedCircleInfo];
+      return newCircles;
+    });
   };
 
   return (
@@ -92,6 +91,7 @@ const Register = () => {
           </S.DashedLine>
         </S.CircleContainer>
       </S.GraphWrapper>
+      <S.Button>라이프 그래프 완성하기</S.Button>
     </S.RegisterWrapper>
   );
 };

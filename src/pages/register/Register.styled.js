@@ -57,11 +57,11 @@ export const AddCircle = styled.button`
 `;
 
 const color = {
-  빨강: "red60",
-  주황: "orange60",
-  연두: "lime60",
-  파랑: "cyan60",
-  보라: "purple60",
+  red: "red60",
+  orange: "orange60",
+  lime: "lime60",
+  cyan: "cyan60",
+  purple: "purple60",
 };
 
 export const Circle = styled.div`
@@ -78,7 +78,7 @@ export const Circle = styled.div`
   filter: blur(2px);
 
   ${({ $color, theme }) => {
-    const colorName = `${color}60`;
+    const colorName = color[$color];
 
     const backgroundColor = theme.colors[colorName];
 
@@ -86,4 +86,19 @@ export const Circle = styled.div`
       background-color: ${backgroundColor};
     `;
   }}
+`;
+
+export const Button = styled.button`
+  display: fixed;
+  width: 100%;
+  bottom: 0;
+  margin-top: 2rem;
+  padding: 1.2rem 2.8rem;
+  justify-content: center;
+  align-items: center;
+
+  background-color: ${({ theme }) => theme.colors.lime60};
+  color: ${({ theme }) => theme.colors.white100};
+
+  ${({ theme }) => theme.fonts.heading4};
 `;
