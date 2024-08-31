@@ -14,6 +14,7 @@ import {
 } from "./Detail.styled.js";
 import GraphCircle from "./components/GraphCircle.jsx";
 import { Divider } from "../register/Register.styled.js";
+import DetailModal from "./components/DetailModal.jsx";
 import { useEffect, useState } from "react";
 
 const graphDemo = {
@@ -70,13 +71,21 @@ const graphDemo = {
 
 export const Detail = () => {
   const [lifeGraph, setLifeGraph] = useState(graphDemo);
+  const [selectedCircleIdx, setSelectedCircleIdx] = useState(null);
 
   useEffect(() => {
     setLifeGraph(graphDemo);
   }, []);
 
+  const handleCircleClick = (index) => {
+    setSelectedCircleIdx(index);
+
+    console.log(selectedCircleIdx);
+  };
+
   return (
     <DetailWrapper>
+      {selectedCircleIdx !== null && <DetailModal />}
       <StickyWrapper>
         <Header title={lifeGraph.title} />
         <DescriptionWrapper>
@@ -106,7 +115,7 @@ export const Detail = () => {
                 date={circle.date}
                 color={circle.color}
                 level={circle.level}
-                idx={index}
+                onClick={() => handleCircleClick(index)}
               />
             </CircleContainer>
           </LineCircleContainer>
