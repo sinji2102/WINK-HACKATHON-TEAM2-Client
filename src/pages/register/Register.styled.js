@@ -31,7 +31,6 @@ export const CircleContainer = styled.section`
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
-
   justify-items: center;
 `;
 
@@ -52,7 +51,7 @@ export const AddCircle = styled.button`
   background-color: ${({ theme }) => theme.colors.lime90};
   border-radius: 50%;
 
-  fill: var(--lime-90, #ccfca9);
+  fill: var(#ccfca9);
   filter: blur(2px);
 `;
 
