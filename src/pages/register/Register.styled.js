@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const RegisterWrapper = styled.section`
   display: flex;
@@ -54,4 +54,51 @@ export const AddCircle = styled.button`
 
   fill: var(--lime-90, #ccfca9);
   filter: blur(2px);
+`;
+
+const color = {
+  red: "red60",
+  orange: "orange60",
+  lime: "lime60",
+  cyan: "cyan60",
+  purple: "purple60",
+};
+
+export const Circle = styled.div`
+  position: absolute;
+  top: 3.2rem;
+  left: -1.75rem;
+  width: 3rem;
+  height: 3rem;
+
+  /* background-color: ${({ theme }) => theme.colors.lime90}; */
+  border-radius: 50%;
+
+  fill: var(--lime-90, #ccfca9);
+  filter: blur(2px);
+
+  ${({ $color, theme }) => {
+    const colorName = color[$color];
+
+    const backgroundColor = theme.colors[colorName];
+
+    return css`
+      background-color: ${backgroundColor};
+    `;
+  }}
+`;
+
+export const Button = styled.button`
+  display: fixed;
+  width: 100%;
+  bottom: 0;
+  margin-top: 2rem;
+  padding: 1.2rem 2.8rem;
+  justify-content: center;
+  align-items: center;
+
+  background-color: ${({ theme }) => theme.colors.lime60};
+  color: ${({ theme }) => theme.colors.white100};
+
+  ${({ theme }) => theme.fonts.heading4};
 `;
