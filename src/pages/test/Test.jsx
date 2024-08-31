@@ -1,38 +1,10 @@
-import { useState } from "react";
-import { TestWrapper } from "./Test.styled";
-import TextArea from "../../components/commons/input/textArea/TextArea";
-import TextField from "../../components/commons/input/textField/TextField";
+import LifeGraphCard from "../../components/commons/lifeGraphCard/LIfeGraphCard.jsx";
 
 const Test = () => {
-  const [inputAreaValue, setInputAreaValue] = useState("");
-  const [inputFieldValue, setInputFieldValue] = useState("");
-
-  const handleChangeInputArea = (e) => {
-    setInputAreaValue(e.target.value);
-  };
-
-  const handleChangeInputField = (e) => {
-    setInputFieldValue(e.target.value);
-  };
-
   return (
-    <TestWrapper>
-      test
-      <TextArea
-        value={inputAreaValue}
-        onChange={handleChangeInputArea}
-        maxLength={300}
-      />
-      <TextField
-        value={inputFieldValue}
-        onChange={handleChangeInputField}
-        placeholder="테스트입니당"
-        name="test"
-        type="input"
-        maxLength={10}
-        cap={true}
-      />
-    </TestWrapper>
+    <div>
+      <LifeGraphCard title={'내가 공군 어학병이 될 수 있었던 이유'} author={'김진성'} primaryColor={'lime60'} />
+    </div>
   );
 };
 
