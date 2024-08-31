@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as S from "./Register.styled";
 import Header from "../../components/header/Header";
 import TextField from "../../components/commons/input/textField/TextField";
@@ -6,17 +7,12 @@ import LevelCircle from "./components/LevelCircle";
 import Modal from "./components/Modal";
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [currLevel, setCurrLevel] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [animation, setAnimation] = useState(false);
-  const [circleInfo, setCircleInfo] = useState({
-    title: null,
-    date: null,
-    content: null,
-    colorType: null,
-    level: null,
-  });
   const [allCircle, setAllCircle] = useState([]);
 
   const handleTitleInput = (e) => {
@@ -37,7 +33,6 @@ const Register = () => {
 
   const addCircleHandler = (value) => {
     const updatedCircleInfo = { ...value, level: currLevel };
-    setCircleInfo(updatedCircleInfo);
 
     setAllCircle((prevCircles) => {
       const newCircles = [...prevCircles, updatedCircleInfo];
@@ -80,7 +75,15 @@ const Register = () => {
                 levelHandler();
                 setAnimation((prev) => !prev);
               }}
-            />
+            ></S.AddCircle>
+            <S.AddIcon
+              onClick={() => {
+                levelHandler();
+                setAnimation((prev) => !prev);
+              }}
+            >
+              <img src="/assets/svgs/plus.svg" />
+            </S.AddIcon>
             {animation && (
               <LevelCircle
                 levelHandler={levelHandler}
@@ -91,7 +94,10 @@ const Register = () => {
           </S.DashedLine>
         </S.CircleContainer>
       </S.GraphWrapper>
-      <S.Button>라이프 그래프 완성하기</S.Button>
+      {/* TODO : 버튼에 API 연결하기 */}
+      <S.Button onClick={() => navigate("/main")}>
+        라이프 그래프 완성하기
+      </S.Button>
     </S.RegisterWrapper>
   );
 };

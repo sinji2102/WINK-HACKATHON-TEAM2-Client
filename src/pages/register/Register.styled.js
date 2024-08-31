@@ -4,6 +4,7 @@ export const RegisterWrapper = styled.section`
   display: flex;
   flex-direction: column;
   height: (var(--vh, 1vh) * 100);
+  min-height: 100vh;
 `;
 
 export const FirstStepWrapper = styled.section`
@@ -56,6 +57,17 @@ export const AddCircle = styled.button`
   filter: blur(2px);
 `;
 
+export const AddIcon = styled.button`
+  position: absolute;
+
+  top: 3.2rem;
+  left: -1.75rem;
+  width: 3rem;
+  height: 3rem;
+
+  z-index: 5;
+`;
+
 const color = {
   red: "red60",
   orange: "orange60",
@@ -88,17 +100,33 @@ export const Circle = styled.div`
   }}
 `;
 
+export const ButtonWrapper = styled.section`
+  display: flex;
+  display: fixed;
+  position: sticky;
+  bottom: 0;
+  margin-top: auto;
+
+  z-index: 1;
+
+  background-color: ${({ theme }) => theme.colors.white100};
+`;
+
 export const Button = styled.button`
   display: fixed;
-  width: 100%;
+  width: 90%;
   bottom: 0;
-  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-top: 4rem;
   padding: 1.2rem 2.8rem;
   justify-content: center;
   align-items: center;
+  align-self: center;
 
   background-color: ${({ theme }) => theme.colors.lime60};
   color: ${({ theme }) => theme.colors.white100};
 
   ${({ theme }) => theme.fonts.heading4};
+
+  z-index: 1;
 `;
