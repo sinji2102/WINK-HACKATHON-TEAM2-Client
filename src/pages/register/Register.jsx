@@ -102,7 +102,11 @@ const Register = () => {
         </S.CircleContainer>
       </S.GraphWrapper>
       {/* TODO : 버튼에 API 연결하기 */}
-      <S.Button onClick={() => checkSubmit()}>라이프 그래프 완성하기</S.Button>
+      <S.ButtonWrapper>
+        <S.Button onClick={() => checkSubmit()}>
+          라이프 그래프 완성하기
+        </S.Button>
+      </S.ButtonWrapper>
     </S.RegisterWrapper>
   );
 };
