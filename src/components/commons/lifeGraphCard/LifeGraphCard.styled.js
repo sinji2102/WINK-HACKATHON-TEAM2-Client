@@ -59,7 +59,7 @@ export const Circle = styled.div`
   width: 5rem;
   height: 5rem;
   border-radius: 100%;
-  background-color: ${({ color, theme }) => theme.colors[color]};
+  background-color: ${({ $color, theme }) => theme.colors[$color]};
   stroke-width: 2rem;
   stroke: rgba(174, 247, 121, 0.50);
   filter: blur(0.2rem);
