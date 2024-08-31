@@ -1,6 +1,6 @@
 import * as S from "./LevelCircle.styled";
 
-const LevelCircle = ({ levelHandler, modalOpen }) => {
+const LevelCircle = ({ levelHandler, modalOpen, closeAnimation }) => {
   const LEVEL_LIST = [1, 2, 3, 4, 5];
 
   return (
@@ -9,7 +9,11 @@ const LevelCircle = ({ levelHandler, modalOpen }) => {
         <S.AnimatedCircle
           key={item}
           $size={item}
-          onClick={(() => levelHandler(item), () => modalOpen())}
+          onClick={() => {
+            modalOpen();
+            levelHandler(item);
+            closeAnimation();
+          }}
         />
       ))}
     </S.LevelCircleWrapper>

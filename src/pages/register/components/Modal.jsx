@@ -3,7 +3,7 @@ import * as S from "./Modal.styled";
 import TextField from "../components/TextField";
 import TextArea from "../../../components/commons/input/textArea/TextArea";
 
-const Modal = ({ modalClose }) => {
+const Modal = ({ modalClose, addCircleHandler }) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [content, setContent] = useState("");
@@ -27,8 +27,38 @@ const Modal = ({ modalClose }) => {
     setColor(value);
   };
 
-  const addCircle = () => {
+  const addCircle = async () => {
     if (title && date && content && color) {
+      let translatedColor;
+      switch (color) {
+        case "빨강":
+          translatedColor = "red";
+          break;
+        case "주황":
+          translatedColor = "orange";
+          break;
+        case "연두":
+          translatedColor = "lime";
+          break;
+        case "파랑":
+          translatedColor = "cyan";
+          break;
+        case "보라":
+          translatedColor = "purple";
+          break;
+        default:
+          translatedColor = "lime";
+      }
+
+      const formData = {
+        title: title,
+        date: date,
+        content: content,
+        colorType: translatedColor,
+      };
+
+      addCircleHandler(formData);
+
       modalClose();
     }
   };
