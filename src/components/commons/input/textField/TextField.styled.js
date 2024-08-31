@@ -20,7 +20,7 @@ export const TextFieldInput = styled.input`
     $isDisabled ? theme.colors.neutral60 : theme.colors.black0};
 
   background: ${({ theme }) => theme.colors.white100};
-  border: 1px solid transparent;
+  border: 1px solid var(--line-gray);
   border-radius: 0.6rem;
 
   // TODO : border 색 추가해 주신 거로 변경하기
