@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.section`
+  color: black;
   display: flex;
   width: 37.5rem;
   height: 6rem;
