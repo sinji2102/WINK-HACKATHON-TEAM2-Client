@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Test from "../pages/test/Test.jsx";
 import Register from "../pages/register/Register.jsx";
 import Main from "../pages/main/Main.jsx";
+import SearchResult from "../pages/searchResult/SearchResult.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
+  },
+  {
+    path: "/search/:query",
+    element: <SearchResult />
   }
 ]);
 export default router;

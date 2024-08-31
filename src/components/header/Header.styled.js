@@ -18,6 +18,7 @@ export const Arrow = styled.button`
 `;
 
 export const HeaderText = styled.div`
+  color: black;
   ${({ theme }) => theme.fonts.heading3};
   padding-left: 1.5rem;
 `;
