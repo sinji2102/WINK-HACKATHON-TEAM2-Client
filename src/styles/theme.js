@@ -16,7 +16,6 @@ const theme = {
   colors: {
     black0: "#000000",
     white100: "#FFFFFF",
-
     neutral99: "F7F7F7",
     neutral95: "DCDCDC",
     neutral90: "C4C4C4",
@@ -185,6 +184,8 @@ const theme = {
     pink30: "#A81690",
     pink20: "#730560",
     pink10: "#3D0133",
+
+    kakao: "#FEE500",
   },
 
   fonts: {
