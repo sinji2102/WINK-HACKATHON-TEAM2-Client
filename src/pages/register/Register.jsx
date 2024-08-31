@@ -2,12 +2,19 @@ import { useState } from "react";
 import * as S from "./Register.styled";
 import Header from "../../components/header/Header";
 import TextField from "../../components/commons/input/textField/TextField";
+import LevelCircle from "./components/LevelCircle";
 
 const Register = () => {
   const [title, setTitle] = useState("");
+  const [cnt, setCnt] = useState([0, 1, 2]);
+  const [currIdx, setCurrIdx] = useState(null);
 
   const handleTitleInput = (e) => {
     setTitle(e.target.value);
+  };
+
+  const handleOpenAddBtn = (idx) => {
+    setCurrIdx(idx);
   };
 
   return (
@@ -24,6 +31,21 @@ const Register = () => {
           placeholder="ex) 내가 공군 어학병이 될 수 있었던 이유"
         />
       </S.FirstStepWrapper>
+      <S.Divider />
+      {cnt.map((item) => (
+        <S.GraphWrapper key={item}>
+          <S.CircleContainer>
+            <S.DashedLine>
+              <S.AddCircle onClick={() => handleOpenAddBtn(item)} />
+              {currIdx === item && (
+                <S.LevelCircleContainer>
+                  <LevelCircle />
+                </S.LevelCircleContainer>
+              )}
+            </S.DashedLine>
+          </S.CircleContainer>
+        </S.GraphWrapper>
+      ))}
     </S.RegisterWrapper>
   );
 };
