@@ -1,8 +1,9 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const RegisterWrapper = styled.section`
   display: flex;
   flex-direction: column;
+  height: (var(--vh, 1vh) * 100);
 `;
 
 export const FirstStepWrapper = styled.section`
@@ -53,34 +54,4 @@ export const AddCircle = styled.button`
 
   fill: var(--lime-90, #ccfca9);
   filter: blur(2px);
-`;
-
-export const LevelCircleContainer = styled.section`
-  position: relative;
-  align-items: center;
-`;
-
-const moveRight = keyframes`
-  from {
-    transform: translateX(0);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(40px);
-    opacity: 1;
-  }
-`;
-
-export const AnimatedCircle = styled.div`
-  position: absolute;
-  top: 3.9rem;
-  width: 1.5rem;
-  height: 1.5rem;
-
-  filter: blur(2px);
-
-  background-color: ${({ theme }) => theme.colors.lime90};
-  border-radius: 50%;
-
-  animation: ${moveRight} 0.5s ease forwards;
 `;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const TextAreaWrapper = styled.section`
   position: relative;
-  width: 28rem;
+  width: 26rem;
 `;
 
 export const TextAreaInput = styled.textarea`
@@ -17,7 +17,8 @@ export const TextAreaInput = styled.textarea`
   background: ${({ theme }) => theme.colors.gray_800};
   outline: none;
   border: 1px solid transparent;
-  border-radius: 0.6rem;
+  border-radius: 1rem;
+  border-color: ${({ theme }) => theme.colors.line};
 
   resize: none;
 

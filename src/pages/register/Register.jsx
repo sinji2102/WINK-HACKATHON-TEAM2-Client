@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./Register.styled";
 import Header from "../../components/header/Header";
 import TextField from "../../components/commons/input/textField/TextField";
 import LevelCircle from "./components/LevelCircle";
+import Modal from "./components/Modal";
 
 const Register = () => {
   const [title, setTitle] = useState("");
   const [cnt, setCnt] = useState([0, 1, 2]);
   const [currIdx, setCurrIdx] = useState(null);
+  const [currLevel, setCurrLevel] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   const handleTitleInput = (e) => {
     setTitle(e.target.value);
@@ -17,8 +20,19 @@ const Register = () => {
     setCurrIdx(idx);
   };
 
+  const levelHandler = (value) => {
+    setCurrLevel(value);
+  };
+
+  const modalHandler = () => {
+    setModalOpen(!modalOpen);
+  };
+
+  useEffect(() => {}, [modalOpen]);
+
   return (
     <S.RegisterWrapper>
+      {modalOpen && <Modal modalClose={modalHandler} />}
       <Header title="라이프 그래프 등록하기" />
       <S.FirstStepWrapper>
         <S.FirstStepText>라이프 그래프의 제목을 등록해 주세요.</S.FirstStepText>
@@ -38,9 +52,10 @@ const Register = () => {
             <S.DashedLine>
               <S.AddCircle onClick={() => handleOpenAddBtn(item)} />
               {currIdx === item && (
-                <S.LevelCircleContainer>
-                  <LevelCircle />
-                </S.LevelCircleContainer>
+                <LevelCircle
+                  levelHandler={levelHandler}
+                  modalOpen={modalHandler}
+                />
               )}
             </S.DashedLine>
           </S.CircleContainer>

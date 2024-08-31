@@ -12,7 +12,8 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --line-gray: #E0E0E2;
+  --line-gray: #e0e0e2;
+  --vh: 100%;
 }
 
 a {

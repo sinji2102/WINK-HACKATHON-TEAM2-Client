@@ -1,9 +1,9 @@
-import { Generators } from "../../../../styles/generator";
+import { Generators } from "../../../styles/generator";
 import styled from "styled-components";
 
 export const TextFieldLayout = styled.section`
   position: relative;
-  width: ${({ $narrow }) => ($narrow ? "13.6rem" : "32.7rem")};
+  width: 26rem;
 `;
 
 export const TextFieldWrapper = styled.article`
@@ -11,20 +11,17 @@ export const TextFieldWrapper = styled.article`
 `;
 
 export const TextFieldInput = styled.input`
-  width: 33rem;
+  width: 25rem;
   height: 5rem;
   height: ${({ $narrow }) => ($narrow ? "4.2rem" : "4.8rem")};
-  padding: 0 1.6rem;
 
   color: ${({ theme, $isDisabled }) =>
-    $isDisabled ? theme.colors.neutral60 : theme.colors.black0};
+    $isDisabled ? theme.colors.line : theme.colors.black0};
 
   background: ${({ theme }) => theme.colors.white100};
   border: 1px solid transparent;
-  border-radius: 0.6rem;
+  border-radius: 1rem;
   border-color: ${({ theme }) => theme.colors.line};
-
-  // TODO : border 색 추가해 주신 거로 변경하기
 
   ${({ theme }) => theme.fonts.body2_normal_medi};
 
