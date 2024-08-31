@@ -5,6 +5,7 @@ import Header from "../../components/header/Header";
 import TextField from "../../components/commons/input/textField/TextField";
 import LevelCircle from "./components/LevelCircle";
 import Modal from "./components/Modal";
+import { postRegister } from "../../apis/register/postRegister";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -40,11 +41,22 @@ const Register = () => {
     });
   };
 
-  const checkSubmit = () => {
+  const checkSubmit = async () => {
     if (title && allCircle.length !== 0) {
-      navigate("/main");
+      navigate("/");
+      try {
+        const formData = {
+          title: title,
+          loadmapCircleList: allCircle,
+        };
+        console.log(formData);
+        await postRegister(formData);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      alert("제목 혹은 라이프 그래프를 한 개 이상 입력하세요!");
     }
-    alert("제목 혹은 라이프 그래프를 한 개 이상 입력하세요!");
   };
 
   return (
