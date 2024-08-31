@@ -25,6 +25,11 @@ const router = createBrowserRouter([
   {
     path: "/search/:query",
     element: <SearchResult />
+  },
+  {
+    path: '/callback',
+    element: <KakaoCallback />,
+  },
   }
 ]);
 export default router;
