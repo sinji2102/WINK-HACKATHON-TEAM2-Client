@@ -49,7 +49,7 @@ const GlobalStyle = createGlobalStyle`
   @media screen and (max-width: 375px) {  
     body {
       width: 100%;
-      min-height: 100%;
+      min-height: 100vh;
       margin: 0 auto;
       overflow-x: hidden;
       background-color: #FFFFF7;
@@ -59,7 +59,7 @@ const GlobalStyle = createGlobalStyle`
   @media screen and (min-width: 376px) {
     body {
       width: 375px;
-      min-height: 100%;
+      min-height: 100vh;
       margin: 0 auto;
       overflow-x: hidden;
       background-color: #FFFFF7;
