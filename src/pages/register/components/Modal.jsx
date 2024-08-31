@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import * as S from "./Modal.styled";
 import TextField from "../components/TextField";
 import TextArea from "../../../components/commons/input/textArea/TextArea";
@@ -7,6 +7,9 @@ const Modal = ({ modalClose }) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [content, setContent] = useState("");
+  const [color, setColor] = useState("");
+
+  const COLOR_LIST = ["빨강", "주황", "연두", "파랑", "보라"];
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -18,6 +21,10 @@ const Modal = ({ modalClose }) => {
 
   const handleContent = (e) => {
     setContent(e.target.value);
+  };
+
+  const handleColor = (value) => {
+    setColor(value);
   };
 
   return (
@@ -54,6 +61,22 @@ const Modal = ({ modalClose }) => {
           <S.InputTitle>상세 내용을 입력해 주세요</S.InputTitle>
           <TextArea maxLength={250} value={content} onChange={handleContent} />
         </S.InputContainer>
+        <S.InputTitle>서클의 색을 선택해 주세요.</S.InputTitle>
+        <S.LabelContainer>
+          {COLOR_LIST.map((item) => (
+            <>
+              {item === color ? (
+                <S.SelectedLabel $color={item} key={item}>
+                  {item}
+                </S.SelectedLabel>
+              ) : (
+                <S.Label key={item} onClick={() => handleColor(item)}>
+                  {item}
+                </S.Label>
+              )}
+            </>
+          ))}
+        </S.LabelContainer>
       </S.ModalContainer>
     </S.ModalWrapper>
   );
