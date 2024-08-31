@@ -186,6 +186,7 @@ const theme = {
     pink10: "#3D0133",
 
     kakao: "#FEE500",
+    line: "#70737C38",
   },
 
   fonts: {
