@@ -4,6 +4,8 @@ import Register from "../pages/register/Register.jsx";
 import Main from "../pages/main/Main.jsx";
 import SearchResult from "../pages/searchResult/SearchResult.jsx";
 import Login from "../pages/login/Login.jsx";
+import Detail from "../pages/detail/Detail.jsx";
+import KakaoCallback from "../pages/kakaoCallback/KakaoCallback.jsx";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +32,9 @@ const router = createBrowserRouter([
     path: '/callback',
     element: <KakaoCallback />,
   },
+  {
+    path: '/detail',
+    element: <Detail />
   }
 ]);
 export default router;
