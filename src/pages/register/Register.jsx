@@ -40,6 +40,13 @@ const Register = () => {
     });
   };
 
+  const checkSubmit = () => {
+    if (title && allCircle.length !== 0) {
+      navigate("/main");
+    }
+    alert("제목 혹은 라이프 그래프를 한 개 이상 입력하세요!");
+  };
+
   return (
     <S.RegisterWrapper>
       {modalOpen && (
@@ -95,9 +102,7 @@ const Register = () => {
         </S.CircleContainer>
       </S.GraphWrapper>
       {/* TODO : 버튼에 API 연결하기 */}
-      <S.Button onClick={() => navigate("/main")}>
-        라이프 그래프 완성하기
-      </S.Button>
+      <S.Button onClick={() => checkSubmit()}>라이프 그래프 완성하기</S.Button>
     </S.RegisterWrapper>
   );
 };

@@ -60,6 +60,8 @@ const Modal = ({ modalClose, addCircleHandler }) => {
       addCircleHandler(formData);
 
       modalClose();
+    } else {
+      alert("제목, 날짜, 상세 내용, 서클 색을 모두 입력해 주세요.");
     }
   };
 
