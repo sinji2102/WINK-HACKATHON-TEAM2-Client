@@ -101,10 +101,12 @@ export const Circle = styled.div`
 
 export const ButtonWrapper = styled.section`
   display: flex;
-  display: fixed;
   position: sticky;
   bottom: 0;
   margin-top: auto;
+
+  justify-content: center;
+  align-items: center;
 
   z-index: 1;
 
