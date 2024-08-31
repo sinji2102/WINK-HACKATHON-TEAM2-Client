@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as S from "./Register.styled";
 import Header from "../../components/header/Header";
 import TextField from "../../components/commons/input/textField/TextField";
@@ -8,8 +8,6 @@ const Register = () => {
   const [title, setTitle] = useState("");
   const [cnt, setCnt] = useState([0, 1, 2]);
   const [currIdx, setCurrIdx] = useState(null);
-
-  const levelList = [1, 2, 3, 4, 5];
 
   const handleTitleInput = (e) => {
     setTitle(e.target.value);

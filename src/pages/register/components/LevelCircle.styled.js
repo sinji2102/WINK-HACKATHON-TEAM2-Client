@@ -20,11 +20,11 @@ const size = {
 };
 
 const translateX = {
-  1: 4.3,
-  2: 7.7,
-  3: 11.6,
-  4: 16.4,
-  5: 22.4,
+  1: 4.8,
+  2: 8.2,
+  3: 12.1,
+  4: 16.9,
+  5: 22.9,
 };
 
 const top = {
@@ -47,7 +47,7 @@ export const LevelCircleWrapper = styled.section`
   display: flex;
 `;
 
-export const AnimatedCircle = styled.div`
+export const AnimatedCircle = styled.button`
   position: absolute;
 
   filter: blur(2px);
