@@ -1,10 +1,10 @@
 import {
   CarouselWrapper,
   LifeGraphCardWrapper, LogoutText,
-  MainWrapper,
+  MainWrapper, NameWrapper, P,
   RankingText,
   RankingTextWrapper,
-  StickyWrapper
+  StickyWrapper, UserName, Welcome, WelcomeWrapper
 } from "./Main.styled.js";
 import SearchBar from "../../components/commons/input/searchBar/SearchBar.jsx";
 import {useEffect, useState} from "react";
@@ -91,11 +91,12 @@ const lifeGraphCards = [
 
 const Main = () => {
   const navigate = useNavigate();
+  const [username, setUsername] = useState('테스트');
   const [lifeGraphs, setLifeGraphs] = useState(lifeGraphCards);
 
   const handleLogout = () => {
     if (localStorage.getItem('token')) {
-      localStorage.removeItem('token');
+      localStorage.clear();
       navigate('/login');
     }
   }
@@ -106,13 +107,24 @@ const Main = () => {
     //토큰 정보가 없다면 로그인 페이지로 이동
     if (!localStorage.getItem('token')) {
       navigate('/login');
+      return;
     }
+
+    //TODO: 유저 이름도 받아오기 (API 연결할 때)
+    setUsername('테스트1');
   }, []);
 
   return (
     <MainWrapper>
       <StickyWrapper>
         <CarouselWrapper>
+          <WelcomeWrapper>
+            <NameWrapper>
+              <UserName>{username}</UserName>
+              <P>님</P>
+            </NameWrapper>
+            <Welcome>환영합니다!</Welcome>
+          </WelcomeWrapper>
         </CarouselWrapper>
         <SearchBar />
         <RankingTextWrapper>

@@ -11,9 +11,41 @@ export const MainWrapper = styled.div`
 `;
 
 export const CarouselWrapper = styled.div`
+  width: 32rem;
   height: 15rem;
-  background-color: gray;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 `;
+
+export const WelcomeWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.8rem;
+`
+
+export const NameWrapper = styled.div`
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+`
+
+export const UserName = styled.p`
+  color: black;
+  ${({ theme }) => theme.fonts.body2_normal_semi}
+`
+
+export const P = styled.p`
+  color: black;
+  ${({ theme }) => theme.fonts.body2_normal_medi}
+`
+
+export const Welcome = styled.p`
+  color: black;
+  ${({ theme }) => theme.fonts.body1_normal_medi}
+`
 
 export const RankingTextWrapper = styled.div`
   width: 32.9rem;
