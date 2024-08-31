@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as S from "./Modal.styled";
 import TextField from "../components/TextField";
 import TextArea from "../../../components/commons/input/textArea/TextArea";
@@ -25,6 +25,12 @@ const Modal = ({ modalClose }) => {
 
   const handleColor = (value) => {
     setColor(value);
+  };
+
+  const addCircle = () => {
+    if (title && date && content && color) {
+      modalClose();
+    }
   };
 
   return (
@@ -77,6 +83,13 @@ const Modal = ({ modalClose }) => {
             </>
           ))}
         </S.LabelContainer>
+        <S.Button
+          onClick={() => {
+            addCircle();
+          }}
+        >
+          추가하기
+        </S.Button>
       </S.ModalContainer>
     </S.ModalWrapper>
   );

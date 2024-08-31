@@ -99,3 +99,17 @@ export const SelectedLabel = styled.button`
     `;
   }}
 `;
+
+export const Button = styled.button`
+  display: flex;
+  width: 28rem;
+  margin-top: 1.5rem;
+  padding: 1.2rem 2.8rem;
+  justify-content: center;
+  align-items: center;
+
+  background-color: ${({ theme }) => theme.colors.lime60};
+  color: ${({ theme }) => theme.colors.white100};
+
+  ${({ theme }) => theme.fonts.heading4};
+`;
