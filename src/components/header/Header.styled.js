@@ -6,7 +6,6 @@ export const HeaderWrapper = styled.section`
   width: 37.5rem;
   height: 6rem;
   padding: 2rem 1rem;
-  // TODO: 색 나중에 공통으로 변경
   background-color: #fffff7;
   flex-direction: row;
   align-items: center;
@@ -22,4 +21,9 @@ export const HeaderText = styled.div`
   color: black;
   ${({ theme }) => theme.fonts.heading3};
   padding-left: 1.5rem;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-align: start;
 `;
