@@ -68,10 +68,8 @@ export const Detail = () => {
     });
   }, []);
 
-  useEffect(() => {
+  useEffect(() => {}, [lifeGraph]);
 
-  }, [lifeGraph]);
-  
   const handleCircleClick = (index) => {
     setSelectedCircleIdx(index);
   };
@@ -133,7 +131,7 @@ export const Detail = () => {
           </LineCircleContainer>
         ))}
       </GraphContainer>
-      <LikeButton graphId={params.id} likeCount={lifeGraph.like} iLike={lifeGraph.iLike} />
+      {/* <LikeButton graphId={params.id} likeCount={lifeGraph.like} iLike={lifeGraph.iLike} /> */}
     </DetailWrapper>
   );
 };
