@@ -113,7 +113,6 @@ const Register = () => {
           </S.DashedLine>
         </S.CircleContainer>
       </S.GraphWrapper>
-      {/* TODO : 버튼에 API 연결하기 */}
       <S.ButtonWrapper>
         <S.Button onClick={() => checkSubmit()}>
           라이프 그래프 완성하기

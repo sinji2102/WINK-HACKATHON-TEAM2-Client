@@ -5,15 +5,15 @@ import {
   CircleWrapper,
   DateText,
   TextWrapper,
-  TitleText
+  TitleText,
 } from "./GraphCircle.styled.js";
 
-const GraphCircle = ({ level, color, date, title }) => {
+const GraphCircle = ({ level, color, date, title, onClick }) => {
   return (
     <CircleWrapper>
       <CirclesContainer>
-        <BorderCircle $color={color} $level={level} />
-        <Circle $color={color} $level={level} />
+        <BorderCircle $color={color} $level={level} onClick={onClick} />
+        <Circle $color={color} $level={level} onClick={onClick} />
       </CirclesContainer>
       <TextWrapper>
         <DateText>{date}</DateText>

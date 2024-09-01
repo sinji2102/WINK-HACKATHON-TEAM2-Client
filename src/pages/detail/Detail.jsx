@@ -10,87 +10,105 @@ import {
   InfoContainer,
   LineCircleContainer,
   NormalSemiText,
-  StickyWrapper, SummaryTitle,
+  StickyWrapper,
+  SummaryTitle,
   ViewUserContainer,
 } from "./Detail.styled.js";
 import GraphCircle from "./components/GraphCircle.jsx";
 import { Divider } from "../register/Register.styled.js";
+import DetailModal from "./components/DetailModal.jsx";
 import { useEffect, useState } from "react";
-import {privateAxios} from "../../apis/axiosInstance.js";
-import {useNavigate, useParams} from "react-router-dom";
-import LikeButton from "./components/LikeButton.jsx";
+import { privateAxios } from "../../apis/axiosInstance.js";
+import { useNavigate, useParams } from "react-router-dom";
 
 const graphDemo = {
   title: "테스트",
   author: "이정욱",
   viewCount: 99,
+  summary: "AI가 내용을 요약 중입니다...",
   like: 0,
-  summary:
-    "AI가 내용을 요약 중입니다...",
-  circles: [
-  ],
+  circles: [],
 };
 
 export const Detail = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [lifeGraph, setLifeGraph] = useState(graphDemo);
+  const [selectedCircleIdx, setSelectedCircleIdx] = useState(null);
 
   useEffect(() => {
-    privateAxios.get(`/loadmap/${params.id}`)
-      .then((response) => {
-        if (!response.data.loadmapAndColor || !response.data.loadmapCircleList) {
-          navigate('/');
-          return;
-        }
+    privateAxios.get(`/loadmap/${params.id}`).then((response) => {
+      if (!response.data.loadmapAndColor || !response.data.loadmapCircleList) {
+        navigate("/");
+        return;
+      }
 
-        const graphData = response.data.loadmapAndColor.loadmapDto;
-        const circleData = response.data.loadmapCircleList;
-        const circles = circleData.map((circle) => {
-          return (
-            {
-              title: circle.title,
-              date: circle.date,
-              color: circle.colorType,
-              level: circle.level,
-            }
-          );
-        })
-        const graph = {
-          title: graphData.title,
-          author: graphData.user_name,
-          viewCount: graphData.view,
-          summary: graphData.summary,
-          like: graphData.like,
-          iLike: graphData.i_like,
-          circles: circles,
-        }
-
-        setLifeGraph(graph);
+      const graphData = response.data.loadmapAndColor.loadmapDto;
+      const circleData = response.data.loadmapCircleList;
+      const circles = circleData.map((circle) => {
+        return {
+          title: circle.title,
+          date: circle.date,
+          color: circle.colorType,
+          level: circle.level,
+          content: circle.content,
+        };
       });
+      const graph = {
+        title: graphData.title,
+        author: graphData.user_name,
+        viewCount: graphData.view,
+        summary: graphData.summary,
+        like: graphData.like,
+        iLike: graphData.i_like,
+        circles: circles,
+      };
+
+      setLifeGraph(graph);
+    });
   }, []);
 
   useEffect(() => {
 
   }, [lifeGraph]);
+  
+  const handleCircleClick = (index) => {
+    setSelectedCircleIdx(index);
+  };
+
+  const closeModal = () => {
+    setSelectedCircleIdx(null);
+  };
+
+  useEffect(() => {
+    console.log("selectedCircleIdx updated:", selectedCircleIdx);
+  }, [selectedCircleIdx]);
 
   return (
     <DetailWrapper>
+      {selectedCircleIdx !== null && (
+        <DetailModal
+          data={lifeGraph.circles[selectedCircleIdx]}
+          closeBtn={() => {
+            closeModal();
+          }}
+        />
+      )}
       <StickyWrapper>
         <Header title={lifeGraph.title} />
         <DescriptionWrapper>
           <InfoContainer>
             <ViewUserContainer>
-              <img src='/assets/svgs/user.svg' alt={"user"} />
+              <img src="/assets/svgs/user.svg" alt={"user"} />
               <NormalSemiText>{lifeGraph.author}</NormalSemiText>
             </ViewUserContainer>
             <ViewUserContainer>
-              <img src='/assets/svgs/view.svg' alt={"view"} />
+              <img src="/assets/svgs/view.svg" alt={"view"} />
               <NormalSemiText>{lifeGraph.viewCount.toString()}</NormalSemiText>
             </ViewUserContainer>
           </InfoContainer>
           <AISummaryContainer>
-            <img src={'/assets/svgs/gemini.svg'} alt={'gemini'} />
+            <img src={"/assets/svgs/gemini.svg"} alt={"gemini"} />
             <SummaryTitle>의 한 문장 요약</SummaryTitle>
           </AISummaryContainer>
           <DescriptionContainer>
@@ -109,7 +127,7 @@ export const Detail = () => {
                 date={circle.date}
                 color={circle.color}
                 level={circle.level}
-                idx={index}
+                onClick={() => handleCircleClick(index)}
               />
             </CircleContainer>
           </LineCircleContainer>

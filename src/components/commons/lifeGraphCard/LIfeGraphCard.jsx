@@ -5,16 +5,16 @@ import {
   CircleWrapper,
   ContentsWrapper,
   TextWrapper,
-  Title
+  Title,
 } from "./LifeGraphCard.styled.js";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const LifeGraphCard = ({ id, title, author, primaryColor }) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
     navigate(`/detail/${id}`);
-  }
+  };
 
   return (
     <CardWrapper onClick={handleCardClick}>
@@ -29,6 +29,6 @@ const LifeGraphCard = ({ id, title, author, primaryColor }) => {
       </ContentsWrapper>
     </CardWrapper>
   );
-}
+};
 
 export default LifeGraphCard;
