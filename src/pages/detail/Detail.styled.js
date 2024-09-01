@@ -8,8 +8,8 @@ export const DetailWrapper = styled.div`
 
 export const SummaryTitle = styled.p`
   ${({ theme }) => theme.fonts.body2_normal_medi};
-  color: #8F8F8F;
-`
+  color: #8f8f8f;
+`;
 
 export const AISummaryContainer = styled.div`
   display: flex;
@@ -17,7 +17,7 @@ export const AISummaryContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   gap: 0.5rem;
-`
+`;
 
 export const StickyWrapper = styled.div`
   top: 0;
