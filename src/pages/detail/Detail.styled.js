@@ -3,7 +3,7 @@ import styled from "styled-components";
 const circleSize = [4, 5, 7, 10, 12];
 
 export const DetailWrapper = styled.div`
-  /* padding-bottom: 2.4rem; */
+  position: relative;
 `;
 
 export const StickyWrapper = styled.div`

@@ -16,8 +16,8 @@ import GraphCircle from "./components/GraphCircle.jsx";
 import { Divider } from "../register/Register.styled.js";
 import DetailModal from "./components/DetailModal.jsx";
 import { useEffect, useState } from "react";
-import {privateAxios} from "../../apis/axiosInstance.js";
-import {useNavigate, useParams} from "react-router-dom";
+import { privateAxios } from "../../apis/axiosInstance.js";
+import { useNavigate, useParams } from "react-router-dom";
 
 const graphDemo = {
   title: "테스트",
@@ -78,56 +78,67 @@ export const Detail = () => {
   const [selectedCircleIdx, setSelectedCircleIdx] = useState(null);
 
   useEffect(() => {
-    privateAxios.get(`/loadmap/${params.id}`)
-      .then((response) => {
-        if (!response.data.loadmapAndColor || !response.data.loadmapCircleList) {
-          navigate('/');
-          return;
-        }
+    privateAxios.get(`/loadmap/${params.id}`).then((response) => {
+      if (!response.data.loadmapAndColor || !response.data.loadmapCircleList) {
+        navigate("/");
+        return;
+      }
 
-        const graphData = response.data.loadmapAndColor.loadmapDto;
-        const circleData = response.data.loadmapCircleList;
-        const circles = circleData.map((circle) => {
-          return (
-            {
-              title: circle.title,
-              date: circle.date,
-              color: circle.colorType,
-              level: circle.level,
-            }
-          );
-        })
-        const graph = {
-          title: graphData.title,
-          author: graphData.user_name,
-          viewCount: graphData.view,
-          summary: graphData.summary,
-          circles: circles,
-        }
-
-        setLifeGraph(graph);
+      const graphData = response.data.loadmapAndColor.loadmapDto;
+      const circleData = response.data.loadmapCircleList;
+      const circles = circleData.map((circle) => {
+        return {
+          title: circle.title,
+          date: circle.date,
+          color: circle.colorType,
+          level: circle.level,
+          content: circle.content,
+        };
       });
+      const graph = {
+        title: graphData.title,
+        author: graphData.user_name,
+        viewCount: graphData.view,
+        summary: graphData.summary,
+        circles: circles,
+      };
+
+      setLifeGraph(graph);
+    });
   }, []);
 
   const handleCircleClick = (index) => {
     setSelectedCircleIdx(index);
-
-    console.log(selectedCircleIdx);
   };
+
+  const closeModal = () => {
+    setSelectedCircleIdx(null);
+  };
+
+  useEffect(() => {
+    console.log("selectedCircleIdx updated:", selectedCircleIdx);
+  }, [selectedCircleIdx]);
 
   return (
     <DetailWrapper>
-      {selectedCircleIdx !== null && <DetailModal />}
+      {selectedCircleIdx !== null && (
+        <DetailModal
+          data={lifeGraph.circles[selectedCircleIdx]}
+          closeBtn={() => {
+            closeModal();
+          }}
+        />
+      )}
       <StickyWrapper>
         <Header title={lifeGraph.title} />
         <DescriptionWrapper>
           <InfoContainer>
             <ViewUserContainer>
-              <img src='/assets/svgs/user.svg' alt={"user"} />
+              <img src="/assets/svgs/user.svg" alt={"user"} />
               <NormalSemiText>{lifeGraph.author}</NormalSemiText>
             </ViewUserContainer>
             <ViewUserContainer>
-              <img src='/assets/svgs/view.svg' alt={"view"} />
+              <img src="/assets/svgs/view.svg" alt={"view"} />
               <NormalSemiText>{lifeGraph.viewCount.toString()}</NormalSemiText>
             </ViewUserContainer>
           </InfoContainer>
