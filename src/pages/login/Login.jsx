@@ -5,8 +5,8 @@ const Login = () => {
   return (
     <LoginWrapper>
       <img src={'/assets/svgs/logo.svg'} width={100} height={100} alt={'logo'} />
-      <SloganText>인생을 원으로 바라보다</SloganText>
-      <Title>"라이프 써클"</Title>
+      <SloganText>둥글게 보는 인생 로드맵</SloganText>
+      <Title>"LIFE-CIRCLE"</Title>
       <KakaoLoginButton />
     </LoginWrapper>
   )

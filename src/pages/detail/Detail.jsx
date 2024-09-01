@@ -10,7 +10,8 @@ import {
   InfoContainer,
   LineCircleContainer,
   NormalSemiText,
-  StickyWrapper, SummaryTitle,
+  StickyWrapper,
+  SummaryTitle,
   ViewUserContainer,
 } from "./Detail.styled.js";
 import GraphCircle from "./components/GraphCircle.jsx";
@@ -24,10 +25,9 @@ const graphDemo = {
   title: "테스트",
   author: "이정욱",
   viewCount: 99,
-  summary:
-    "AI가 내용을 요약 중입니다...",
-  circles: [
-  ],
+  summary: "AI가 내용을 요약 중입니다...",
+  like: 10,
+  circles: [],
 };
 
 export const Detail = () => {
@@ -51,7 +51,6 @@ export const Detail = () => {
           date: circle.date,
           color: circle.colorType,
           level: circle.level,
-          content: circle.content,
         };
       });
       const graph = {
@@ -102,7 +101,7 @@ export const Detail = () => {
             </ViewUserContainer>
           </InfoContainer>
           <AISummaryContainer>
-            <img src={'/assets/svgs/gemini.svg'} alt={'gemini'} />
+            <img src={"/assets/svgs/gemini.svg"} alt={"gemini"} />
             <SummaryTitle>의 한 문장 요약</SummaryTitle>
           </AISummaryContainer>
           <DescriptionContainer>
@@ -127,6 +126,7 @@ export const Detail = () => {
           </LineCircleContainer>
         ))}
       </GraphContainer>
+      <LikeButton graphId={params.id} likeCount={lifeGraph.like} />
     </DetailWrapper>
   );
 };
