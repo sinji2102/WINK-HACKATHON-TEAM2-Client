@@ -1,5 +1,6 @@
 import Header from "../../components/header/Header.jsx";
 import {
+  AISummaryContainer,
   CircleContainer,
   DashedLine,
   DescriptionContainer,
@@ -9,7 +10,7 @@ import {
   InfoContainer,
   LineCircleContainer,
   NormalSemiText,
-  StickyWrapper,
+  StickyWrapper, SummaryTitle,
   ViewUserContainer,
 } from "./Detail.styled.js";
 import GraphCircle from "./components/GraphCircle.jsx";
@@ -21,52 +22,10 @@ import {useNavigate, useParams} from "react-router-dom";
 const graphDemo = {
   title: "테스트",
   author: "이정욱",
-  viewCount: 97,
+  viewCount: 99,
   summary:
-    "이 텍스트는 한 줄 요약을 위한 텍스트입니다. 아얾ㄷ;ㅓㄹ;ㅑㅐㅁㄹ먿ㄹㅁㄷ럄ㄷㄹ;먀ㅐㅓㄹㄷㅁㅁㄷ랴ㅐㅇㅇㅇㅇㅇ",
+    "AI가 내용을 요약 중입니다...",
   circles: [
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 5,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 4,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 2,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 1,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 4,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 3,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 2,
-    },
   ],
 };
 
@@ -122,6 +81,10 @@ export const Detail = () => {
               <NormalSemiText>{lifeGraph.viewCount.toString()}</NormalSemiText>
             </ViewUserContainer>
           </InfoContainer>
+          <AISummaryContainer>
+            <img src={'/assets/svgs/gemini.svg'} alt={'gemini'} />
+            <SummaryTitle>의 한 문장 요약</SummaryTitle>
+          </AISummaryContainer>
           <DescriptionContainer>
             <NormalSemiText>{lifeGraph.summary}</NormalSemiText>
           </DescriptionContainer>

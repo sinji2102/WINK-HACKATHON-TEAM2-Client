@@ -49,17 +49,17 @@ export const NameWrapper = styled.div`
 
 export const UserName = styled.p`
   color: black;
-  ${({ theme }) => theme.fonts.body2_normal_semi}
+  ${({ theme }) => theme.fonts.body1_normal_semi}
 `
 
 export const P = styled.p`
   color: black;
-  ${({ theme }) => theme.fonts.body2_normal_medi}
+  ${({ theme }) => theme.fonts.body1_normal_medi}
 `
 
 export const Welcome = styled.p`
   color: black;
-  ${({ theme }) => theme.fonts.body1_normal_medi}
+  ${({ theme }) => theme.fonts.heading4}
 `
 
 export const RankingTextWrapper = styled.div`
