@@ -51,6 +51,7 @@ const SearchResult = () => {
             graphResults.map((data, index) => (
               <LifeGraphCard
                 key={index}
+                id={data.id}
                 title={data.title}
                 author={data.author}
                 primaryColor={data.primaryColor}
