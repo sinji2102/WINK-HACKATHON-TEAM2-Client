@@ -21,52 +21,10 @@ import {useNavigate, useParams} from "react-router-dom";
 const graphDemo = {
   title: "테스트",
   author: "이정욱",
-  viewCount: 97,
+  viewCount: 99,
   summary:
-    "이 텍스트는 한 줄 요약을 위한 텍스트입니다. 아얾ㄷ;ㅓㄹ;ㅑㅐㅁㄹ먿ㄹㅁㄷ럄ㄷㄹ;먀ㅐㅓㄹㄷㅁㅁㄷ랴ㅐㅇㅇㅇㅇㅇ",
+    "AI가 내용을 요약 중입니다...",
   circles: [
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 5,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 4,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 2,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 1,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 4,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 3,
-    },
-    {
-      title: "test",
-      date: "2024년 9월 1일",
-      color: "lime",
-      level: 2,
-    },
   ],
 };
 
