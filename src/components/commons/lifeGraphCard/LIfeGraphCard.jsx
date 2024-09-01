@@ -20,7 +20,7 @@ const LifeGraphCard = ({ id, title, author, primaryColor }) => {
     <CardWrapper onClick={handleCardClick}>
       <ContentsWrapper>
         <CircleWrapper>
-          <Circle color={primaryColor}></Circle>
+          <Circle $color={primaryColor}></Circle>
         </CircleWrapper>
         <TextWrapper>
           <Title>{title}</Title>
