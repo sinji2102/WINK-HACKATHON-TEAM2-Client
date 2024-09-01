@@ -26,7 +26,7 @@ const graphDemo = {
   author: "이정욱",
   viewCount: 99,
   summary: "AI가 내용을 요약 중입니다...",
-  like: 10,
+  like: 0,
   circles: [],
 };
 
@@ -59,6 +59,8 @@ export const Detail = () => {
         author: graphData.user_name,
         viewCount: graphData.view,
         summary: graphData.summary,
+        like: graphData.like,
+        iLike: graphData.i_like,
         circles: circles,
       };
 
@@ -66,6 +68,10 @@ export const Detail = () => {
     });
   }, []);
 
+  useEffect(() => {
+
+  }, [lifeGraph]);
+  
   const handleCircleClick = (index) => {
     setSelectedCircleIdx(index);
   };
@@ -127,7 +133,7 @@ export const Detail = () => {
           </LineCircleContainer>
         ))}
       </GraphContainer>
-      {/* <LikeButton graphId={params.id} likeCount={lifeGraph.like} /> */}
+      <LikeButton graphId={params.id} likeCount={lifeGraph.like} iLike={lifeGraph.iLike} />
     </DetailWrapper>
   );
 };
