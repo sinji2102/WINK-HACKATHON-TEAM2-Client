@@ -1,5 +1,6 @@
 import Header from "../../components/header/Header.jsx";
 import {
+  AISummaryContainer,
   CircleContainer,
   DashedLine,
   DescriptionContainer,
@@ -9,7 +10,7 @@ import {
   InfoContainer,
   LineCircleContainer,
   NormalSemiText,
-  StickyWrapper,
+  StickyWrapper, SummaryTitle,
   ViewUserContainer,
 } from "./Detail.styled.js";
 import GraphCircle from "./components/GraphCircle.jsx";
@@ -80,6 +81,10 @@ export const Detail = () => {
               <NormalSemiText>{lifeGraph.viewCount.toString()}</NormalSemiText>
             </ViewUserContainer>
           </InfoContainer>
+          <AISummaryContainer>
+            <img src={'/assets/svgs/gemini.svg'} alt={'gemini'} />
+            <SummaryTitle>의 한 문장 요약</SummaryTitle>
+          </AISummaryContainer>
           <DescriptionContainer>
             <NormalSemiText>{lifeGraph.summary}</NormalSemiText>
           </DescriptionContainer>
