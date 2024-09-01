@@ -51,6 +51,7 @@ export const Detail = () => {
           date: circle.date,
           color: circle.colorType,
           level: circle.level,
+          content: circle.content,
         };
       });
       const graph = {
@@ -126,7 +127,7 @@ export const Detail = () => {
           </LineCircleContainer>
         ))}
       </GraphContainer>
-      <LikeButton graphId={params.id} likeCount={lifeGraph.like} />
+      {/* <LikeButton graphId={params.id} likeCount={lifeGraph.like} /> */}
     </DetailWrapper>
   );
 };
