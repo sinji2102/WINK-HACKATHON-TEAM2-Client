@@ -2,10 +2,23 @@ import styled from "styled-components";
 
 export const LoginWrapper = styled.div`
   width: auto;
-  padding: 2.4rem 2.3rem;
+  height: 100vh;     
+  padding: 2.3rem 6.8rem;
   display: flex;
+    flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 1rem;
+`
+
+export const SloganText = styled.p`
+  ${({ theme }) => theme.fonts.heading4};
+  color: black;
+`
+
+export const Title = styled.p`
+    ${({ theme }) => theme.fonts.heading2};
+    color: black;
 `
 
 export const EmptyIconContainer = styled.div`
