@@ -18,6 +18,7 @@ import { Divider } from "../register/Register.styled.js";
 import { useEffect, useState } from "react";
 import {privateAxios} from "../../apis/axiosInstance.js";
 import {useNavigate, useParams} from "react-router-dom";
+import LikeButton from "./components/LikeButton.jsx";
 
 const graphDemo = {
   title: "테스트",
@@ -25,6 +26,7 @@ const graphDemo = {
   viewCount: 99,
   summary:
     "AI가 내용을 요약 중입니다...",
+  like: 10,
   circles: [
   ],
 };
@@ -59,6 +61,7 @@ export const Detail = () => {
           author: graphData.user_name,
           viewCount: graphData.view,
           summary: graphData.summary,
+          like: graphData.like,
           circles: circles,
         }
 
@@ -107,6 +110,7 @@ export const Detail = () => {
           </LineCircleContainer>
         ))}
       </GraphContainer>
+      <LikeButton graphId={params.id} likeCount={lifeGraph.like}  />
     </DetailWrapper>
   );
 };

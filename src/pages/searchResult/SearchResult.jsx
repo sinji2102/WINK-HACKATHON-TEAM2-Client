@@ -28,7 +28,7 @@ const SearchResult = () => {
             id: graph.id,
             title: graph.title,
             author: graph.user_name,
-            primaryColor: graphObject.color,
+            primaryColor: graphObject.color + '60',
           })
         });
 
