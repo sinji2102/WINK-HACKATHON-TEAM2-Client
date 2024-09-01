@@ -6,6 +6,19 @@ export const DetailWrapper = styled.div`
   position: relative;
 `;
 
+export const SummaryTitle = styled.p`
+  ${({ theme }) => theme.fonts.body2_normal_medi};
+  color: #8F8F8F;
+`
+
+export const AISummaryContainer = styled.div`
+  display: flex;
+  width: 32rem;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+`
+
 export const StickyWrapper = styled.div`
   top: 0;
   display: flex;

@@ -10,6 +10,14 @@ export const SearchResultWrapper = styled.div`
   gap: 1rem;
 `;
 
+export const EmptyText= styled.p`
+  width: 32rem;
+  padding: 1.2rem 1.3rem;
+  ${({ theme }) => theme.fonts.body1_normal_medi};
+  text-align: center;
+  color: gray;
+`
+
 export const QueryTextWrapper = styled.div`
   width: 32.9rem;
   display: flex;
