@@ -1,1 +1,1 @@
-# WINK X The COMPASS 해커톤 2팀 Client 레포입니다!
+# 둥글게 보는 인생 로드맵, LIFE_CIRCLE
