@@ -45,3 +45,57 @@
 
 </div>
 <br />
+
+<h2> 📁 폴더 구조 </h2>
+
+```
+📦WINK-HACKATHON-TEAM2-Client
+ ┣ 📂.git
+ ┣ 📂src
+ ┃ ┣ 📂apis
+ ┃ ┃ ┗ 📂register
+ ┃ ┣ 📂components
+ ┃ ┃ ┣ 📂commons
+ ┃ ┃ ┃ ┣ 📂input
+ ┃ ┃ ┃ ┃ ┣ 📂searchBar
+ ┃ ┃ ┃ ┃ ┣ 📂textArea
+ ┃ ┃ ┃ ┃ ┗ 📂textField
+ ┃ ┃ ┃ ┗ 📂lifeGraphCard
+ ┃ ┃ ┗ 📂header
+ ┃ ┣ 📂constants
+ ┃ ┣ 📂hooks
+ ┃ ┣ 📂pages
+ ┃ ┃ ┣ 📂detail
+ ┃ ┃ ┃ ┗ 📂components
+ ┃ ┃ ┣ 📂kakaoCallback
+ ┃ ┃ ┣ 📂login
+ ┃ ┃ ┃ ┗ 📂components
+ ┃ ┃ ┣ 📂main
+ ┃ ┃ ┃ ┗ 📂components
+ ┃ ┃ ┣ 📂register
+ ┃ ┃ ┃ ┗ 📂components
+ ┃ ┃ ┣ 📂searchResult
+ ┃ ┃ ┗ 📂test
+ ┃ ┃ ┃ ┗ 📂components
+ ┃ ┣ 📂routes
+ ┃ ┃ ┗ 📜Router.jsx
+ ┃ ┣ 📂styles
+ ┃ ┃ ┗ 📂fonts
+ ┃ ┣ 📜App.css
+ ┃ ┣ 📜App.jsx
+ ┃ ┣ 📜index.css
+ ┃ ┗ 📜main.jsx
+ ┣ 📜.env
+ ┣ 📜.gitignore
+ ┣ 📜eslint.config.js
+ ┣ 📜index.html
+ ┣ 📜jsconfig.json
+ ┣ 📜package.json
+ ┣ 📜README.md
+ ┣ 📜styled.d.ts
+ ┣ 📜vercel.json
+ ┣ 📜vite.config.js
+ ┣ 📜yarn-error.log
+ ┗ 📜yarn.lockk
+```
+<br />
