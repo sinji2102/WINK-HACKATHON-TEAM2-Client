@@ -1,5 +1,19 @@
-# 둥글게 보는 인생 로드맵, LIFE-CIRCLE
+![해커톤 2팀 발표_page-0010](https://github.com/user-attachments/assets/9c8c8aff-a915-432f-819c-9b1f14e3c206)# 둥글게 보는 인생 로드맵, LIFE-CIRCLE
+![해커톤 2팀 발표_page-0001](https://github.com/user-attachments/assets/b072f9b8-5447-4255-a592-9395c624577d)
 
+## 🌳 아이디어
+| <img width="400" height="225" alt="homepage_1" src="https://github.com/user-attachments/assets/047e9b9b-6c01-4400-b608-cb1690e87ce9"> | <img width="400" height="225" alt="homepage_2" src="https://github.com/user-attachments/assets/545970e6-5c9f-478c-8398-82468980dc6b"> | 
+| :---: | :---: |
+
+</br>
+
+## 🌳 구현 View
+
+![해커톤 2팀 발표_page-0008](https://github.com/user-attachments/assets/43dce0ba-a6f9-46d1-b49e-b3ba04476e63)
+![해커톤 2팀 발표_page-0009](https://github.com/user-attachments/assets/618fae2c-34f9-4809-98ef-d6183ae354d9)
+![해커톤 2팀 발표_page-0010](https://github.com/user-attachments/assets/8c691b35-a8ee-4235-9b3a-f79e47edd3c8)
+
+</br>
 
 ## ✨ OUR TEAM - FrontEnd
    <div align="center">
