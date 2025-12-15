@@ -1,15 +1,30 @@
 import {
   Author,
   CardWrapper,
-  Circle,
-  CircleWrapper,
   ContentsWrapper,
+  Icon,
+  InfoWrapper,
+  StatsWrapper,
+  Tag,
+  TagWrapper,
   TextWrapper,
   Title,
+  View,
 } from "./LifeGraphCard.styled.js";
 import { useNavigate } from "react-router-dom";
+import viewIcon from "/assets/svgs/view.svg";
+import likeIcon from "/assets/svgs/like.svg";
 
-const LifeGraphCard = ({ id, title, author, primaryColor }) => {
+const LifeGraphCard = ({
+  id,
+  title,
+  author,
+  view,
+  like,
+  tags,
+  thumbnail,
+  primaryColor,
+}) => {
   const navigate = useNavigate();
 
   const handleCardClick = () => {
@@ -17,15 +32,33 @@ const LifeGraphCard = ({ id, title, author, primaryColor }) => {
   };
 
   return (
-    <CardWrapper onClick={handleCardClick}>
+    <CardWrapper
+      onClick={handleCardClick}
+      $thumbnail={thumbnail}
+      $primaryColor={primaryColor}
+    >
       <ContentsWrapper>
-        <CircleWrapper>
-          <Circle $color={primaryColor}></Circle>
-        </CircleWrapper>
-        <TextWrapper>
-          <Title>{title}</Title>
-          <Author>{author}</Author>
-        </TextWrapper>
+        <InfoWrapper>
+          <TextWrapper>
+            <Title>{title}</Title>
+            <Author>{author}</Author>
+          </TextWrapper>
+          <TagWrapper>
+            {tags.map((tag, index) => (
+              <Tag key={index}>{tag}</Tag>
+            ))}
+          </TagWrapper>
+        </InfoWrapper>
+        <StatsWrapper>
+          <View>
+            <Icon src={viewIcon} />
+            {view}
+          </View>
+          <View>
+            <Icon src={likeIcon} />
+            {like}
+          </View>
+        </StatsWrapper>
       </ContentsWrapper>
     </CardWrapper>
   );

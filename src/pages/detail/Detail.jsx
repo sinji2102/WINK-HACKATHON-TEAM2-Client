@@ -18,57 +18,39 @@ import GraphCircle from "./components/GraphCircle.jsx";
 import { Divider } from "../register/Register.styled.js";
 import DetailModal from "./components/DetailModal.jsx";
 import { useEffect, useState } from "react";
-import { privateAxios } from "../../apis/axiosInstance.js";
 import { useNavigate, useParams } from "react-router-dom";
-
-const graphDemo = {
-  title: "테스트",
-  author: "이정욱",
-  viewCount: 99,
-  summary: "AI가 내용을 요약 중입니다...",
-  like: 0,
-  circles: [],
-};
+import { mockLifeGraphs } from "../../mock/lifeGraphs.js";
 
 export const Detail = () => {
   const params = useParams();
   const navigate = useNavigate();
-  const [lifeGraph, setLifeGraph] = useState(graphDemo);
+  const [lifeGraph, setLifeGraph] = useState(null);
   const [selectedCircleIdx, setSelectedCircleIdx] = useState(null);
 
   useEffect(() => {
-    privateAxios.get(`/loadmap/${params.id}`).then((response) => {
-      if (!response.data.loadmapAndColor || !response.data.loadmapCircleList) {
-        navigate("/");
-        return;
-      }
+    const graphId = parseInt(params.id, 10);
+    const graphData = mockLifeGraphs.find((g) => g.id === graphId);
 
-      const graphData = response.data.loadmapAndColor.loadmapDto;
-      const circleData = response.data.loadmapCircleList;
-      const circles = circleData.map((circle) => {
-        return {
-          title: circle.title,
-          date: circle.date,
-          color: circle.colorType,
-          level: circle.level,
-          content: circle.content,
-        };
-      });
+    if (graphData) {
       const graph = {
         title: graphData.title,
-        author: graphData.user_name,
+        author: graphData.author,
         viewCount: graphData.view,
-        summary: graphData.summary,
+        summary: graphData.content,
         like: graphData.like,
-        iLike: graphData.i_like,
-        circles: circles,
+        circles: graphData.nodes.map((node) => ({
+          title: node.text,
+          color: node.color,
+          level: node.level,
+          content: "임시 콘텐츠",
+        })),
       };
-
       setLifeGraph(graph);
-    });
-  }, []);
-
-  useEffect(() => {}, [lifeGraph]);
+    } else {
+      // 해당 id의 그래프가 없을 경우 예외 처리
+      navigate("/");
+    }
+  }, [params.id, navigate]);
 
   const handleCircleClick = (index) => {
     setSelectedCircleIdx(index);
@@ -78,18 +60,16 @@ export const Detail = () => {
     setSelectedCircleIdx(null);
   };
 
-  useEffect(() => {
-    console.log("selectedCircleIdx updated:", selectedCircleIdx);
-  }, [selectedCircleIdx]);
+  if (!lifeGraph) {
+    return <div>로딩 중...</div>;
+  }
 
   return (
     <DetailWrapper>
       {selectedCircleIdx !== null && (
         <DetailModal
           data={lifeGraph.circles[selectedCircleIdx]}
-          closeBtn={() => {
-            closeModal();
-          }}
+          closeBtn={closeModal}
         />
       )}
       <StickyWrapper>

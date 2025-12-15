@@ -1,67 +1,35 @@
 import {
   CarouselWrapper,
-  LifeGraphCardWrapper, LogoutText,
-  MainWrapper, NameWrapper, P,
+  LifeGraphCardWrapper,
+  LogoutText,
+  MainWrapper,
+  NameWrapper,
+  P,
   RankingText,
   RankingTextWrapper,
-  StickyWrapper, UserName, Welcome, WelcomeWrapper
+  StickyWrapper,
+  UserName,
+  Welcome,
+  WelcomeWrapper,
 } from "./Main.styled.js";
 import SearchBar from "../../components/commons/input/searchBar/SearchBar.jsx";
-import {useEffect, useState} from "react";
+import { useState } from "react";
 import LifeGraphCard from "../../components/commons/lifeGraphCard/LIfeGraphCard.jsx";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import FloatingButton from "./components/FloatingButton.jsx";
-import {privateAxios} from "../../apis/axiosInstance.js";
+import { mockLifeGraphs } from "../../mock/lifeGraphs.js";
 
 const Main = () => {
   const navigate = useNavigate();
-  const [username, setUsername] = useState('');
-  const [lifeGraphs, setLifeGraphs] = useState([]);
+  const [username, setUsername] = useState("사용자");
+  const [lifeGraphs, setLifeGraphs] = useState(mockLifeGraphs);
 
   const handleLogout = () => {
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem("token")) {
       localStorage.clear();
-      navigate('/login');
+      navigate("/login");
     }
-  }
-
-  useEffect(() => {
-    //console.log('메인 페이지 시작함');
-
-    //토큰 정보가 없다면 로그인 페이지로 이동
-    if (!localStorage.getItem('token')) {
-      navigate('/login');
-      return;
-    }
-
-    privateAxios.get(`/loadmap/main`)
-      .then((response) => {
-        if (!response.data.list || !response.data.name) {
-          localStorage.clear();
-          navigate('/login');
-          return;
-        }
-
-        //console.log("api 받음");
-
-        const name = response.data.name;
-        const receivedGraphs = response.data.list;
-        const graphs = receivedGraphs.map((graphObject) => {
-          const graph = graphObject.loadmapDto;
-          return ({
-            id: graph.id,
-            title: graph.title,
-            author: graph.user_name,
-            primaryColor: graphObject.color + '60',
-          })
-        });
-
-        //console.log(graphs);
-
-        setLifeGraphs(graphs);
-        setUsername(name);
-      })
-  }, []);
+  };
 
   return (
     <>
@@ -82,27 +50,25 @@ const Main = () => {
           </RankingTextWrapper>
         </StickyWrapper>
         <LifeGraphCardWrapper>
-          {
-            lifeGraphs.map((data, index) => (
-              <LifeGraphCard
-                key={index}
-                id={data.id}
-                title={data.title}
-                author={data.author}
-                primaryColor={data.primaryColor}
-              />
-            ))
-          }
+          {lifeGraphs.map((data) => (
+            <LifeGraphCard
+              key={data.id}
+              id={data.id}
+              title={data.title}
+              author={data.author}
+              view={data.view}
+              like={data.like}
+              tags={data.tags}
+              thumbnail={data.thumbnail}
+              primaryColor={data.primaryColor}
+            />
+          ))}
         </LifeGraphCardWrapper>
-        <LogoutText
-          onClick={handleLogout}
-        >
-          로그아웃
-        </LogoutText>
+        <LogoutText onClick={handleLogout}>로그아웃</LogoutText>
         <FloatingButton />
       </MainWrapper>
     </>
   );
-}
+};
 
 export default Main;

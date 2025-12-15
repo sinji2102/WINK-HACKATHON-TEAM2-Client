@@ -1,4 +1,4 @@
-import * as S from "./DetatilModal.styled";
+import * as S from "./DetailModal.styled";
 
 const DetailModal = ({ data, closeBtn }) => {
   return (
