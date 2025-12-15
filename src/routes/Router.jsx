@@ -6,6 +6,8 @@ import SearchResult from "../pages/searchResult/SearchResult.jsx";
 import Login from "../pages/login/Login.jsx";
 import Detail from "../pages/detail/Detail.jsx";
 import KakaoCallback from "../pages/kakaoCallback/KakaoCallback.jsx";
+import Edit from "../pages/edit/Edit.jsx";
+import Favorites from "../pages/favorites/Favorites.jsx";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +17,14 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+  {
+    path: "/edit/:id",
+    element: <Edit />,
+  },
+  {
+    path: "/favorites",
+    element: <Favorites />,
   },
   {
     path: "/",

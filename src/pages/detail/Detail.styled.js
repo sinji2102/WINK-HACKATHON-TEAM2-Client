@@ -95,3 +95,24 @@ export const ViewUserContainer = styled.div`
   align-items: center;
   gap: 0.7rem;
 `;
+
+export const ActionButtonsContainer = styled.div`
+  width: 32rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  margin-top: 0.4rem;
+`;
+
+export const ActionButton = styled.button`
+  ${({ theme }) => theme.fonts.caption1_medi};
+  color: ${({ theme }) => theme.colors.neutral60};
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  border: 1px solid ${({ theme }) => theme.colors.neutral90};
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.neutral95};
+  }
+`;

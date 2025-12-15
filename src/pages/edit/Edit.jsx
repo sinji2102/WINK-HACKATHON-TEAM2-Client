@@ -1,23 +1,53 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import * as S from "./Register.styled";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import * as S from "../register/Register.styled";
 import Header from "../../components/header/Header";
 import TextField from "../../components/commons/input/textField/TextField";
-import LevelCircle from "./components/LevelCircle";
-import Modal from "./components/Modal";
-import { postRegister } from "../../apis/register/postRegister";
+import LevelCircle from "../register/components/LevelCircle";
+import Modal from "../register/components/Modal";
+import { mockLifeGraphs } from "../../mock/lifeGraphs";
 
-const Register = () => {
+const Edit = () => {
   const navigate = useNavigate();
+  const params = useParams();
 
   const [title, setTitle] = useState("");
   const [currLevel, setCurrLevel] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
   const [animation, setAnimation] = useState(false);
   const [allCircle, setAllCircle] = useState([]);
+  const [selectedCircleIndex, setSelectedCircleIndex] = useState(null);
 
-  const handleTitleInput = (e) => {
-    setTitle(e.target.value);
+  useEffect(() => {
+    const graphId = parseInt(params.id, 10);
+    const graphData = mockLifeGraphs.find((g) => g.id === graphId);
+
+    if (graphData) {
+      setTitle(graphData.title);
+      const circles = graphData.nodes.map(node => ({
+        title: node.text,
+        content: node.content,
+        colorType: node.color,
+        level: node.level,
+        date: "2023-01-01" // placeholder
+      }));
+      setAllCircle(circles);
+    } else {
+      alert("존재하지 않는 그래프입니다.");
+      navigate("/");
+    }
+  }, [params.id, navigate]);
+
+  const openModalForEdit = (index) => {
+    setSelectedCircleIndex(index);
+    modalHandler();
+  };
+
+  const editCircleHandler = (index, updatedCircle) => {
+    setAllCircle(prevCircles =>
+      prevCircles.map((circle, i) => (i === index ? updatedCircle : circle))
+    );
+    setSelectedCircleIndex(null); // Reset after editing
   };
 
   const levelHandler = (value) => {
@@ -43,44 +73,41 @@ const Register = () => {
 
   const checkSubmit = async () => {
     if (title && allCircle.length !== 0) {
-      // In a real app, you would get the new graph's ID from the response.
-      // For mock purposes, we'll navigate to a sample detail page.
-      navigate("/detail/1");
-      try {
-        const formData = {
-          title: title,
-          loadmapCircleList: allCircle,
-        };
-        console.log("Mock submission:", formData);
-        // await postRegister(formData); // This would be a real API call
-      } catch (error) {
-        console.log(error);
-      }
+      console.log("Mock update:", { title, allCircle });
+      navigate(`/detail/${params.id}`);
     } else {
-      alert("제목 혹은 라이프 그래프를 한 개 이상 입력하세요!");
+      alert("라이프 그래프는 한 개 이상이어야 합니다!");
     }
   };
 
   return (
     <S.RegisterWrapper>
       {modalOpen && (
-        <Modal modalClose={modalHandler} addCircleHandler={addCircleHandler} />
+        <Modal
+          modalClose={() => {
+            modalHandler();
+            setSelectedCircleIndex(null); // Reset on close
+          }}
+          addCircleHandler={addCircleHandler}
+          editCircleHandler={editCircleHandler}
+          initialData={selectedCircleIndex !== null ? allCircle[selectedCircleIndex] : null}
+          circleIndex={selectedCircleIndex}
+        />
       )}
-      <Header title="라이프 그래프 등록하기" />
+      <Header title="라이프 그래프 수정하기" />
       <S.FirstStepWrapper>
-        <S.FirstStepText>라이프 그래프의 제목을 등록해 주세요.</S.FirstStepText>
+        <S.FirstStepText>라이프 그래프의 제목</S.FirstStepText>
         <TextField
           name="life-graph-title"
           value={title}
-          onChange={handleTitleInput}
           maxLength={30}
           cap={true}
-          placeholder="ex) 내가 공군 어학병이 될 수 있었던 이유"
+          disabled={true} // Title is not editable
         />
       </S.FirstStepWrapper>
       <S.Divider />
       {allCircle.map((item, idx) => (
-        <S.GraphWrapper key={idx}>
+        <S.GraphWrapper key={idx} onClick={() => openModalForEdit(idx)}>
           <S.CircleContainer>
             <S.DashedLine>
               <S.Circle $color={item.colorType} />
@@ -117,11 +144,11 @@ const Register = () => {
       </S.GraphWrapper>
       <S.ButtonWrapper>
         <S.Button onClick={() => checkSubmit()}>
-          라이프 그래프 완성하기
+          수정 완료
         </S.Button>
       </S.ButtonWrapper>
     </S.RegisterWrapper>
   );
 };
 
-export default Register;
+export default Edit;

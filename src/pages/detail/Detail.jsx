@@ -13,6 +13,8 @@ import {
   StickyWrapper,
   SummaryTitle,
   ViewUserContainer,
+  ActionButtonsContainer,
+  ActionButton,
 } from "./Detail.styled.js";
 import GraphCircle from "./components/GraphCircle.jsx";
 import { Divider } from "../register/Register.styled.js";
@@ -20,12 +22,15 @@ import DetailModal from "./components/DetailModal.jsx";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { mockLifeGraphs } from "../../mock/lifeGraphs.js";
+import LikeButton from "./components/LikeButton.jsx";
 
 export const Detail = () => {
   const params = useParams();
   const navigate = useNavigate();
   const [lifeGraph, setLifeGraph] = useState(null);
   const [selectedCircleIdx, setSelectedCircleIdx] = useState(null);
+  const [isLiked, setIsLiked] = useState(false);
+  const [likeCount, setLikeCount] = useState(0);
 
   useEffect(() => {
     const graphId = parseInt(params.id, 10);
@@ -37,17 +42,18 @@ export const Detail = () => {
         author: graphData.author,
         viewCount: graphData.view,
         summary: graphData.content,
-        like: graphData.like,
         circles: graphData.nodes.map((node) => ({
           title: node.text,
           color: node.color,
           level: node.level,
           content: node.content,
+          date: "2023-01-01", // Placeholder date
         })),
       };
       setLifeGraph(graph);
+      setIsLiked(graphData.isLiked);
+      setLikeCount(graphData.like);
     } else {
-      // 해당 id의 그래프가 없을 경우 예외 처리
       navigate("/");
     }
   }, [params.id, navigate]);
@@ -58,6 +64,22 @@ export const Detail = () => {
 
   const closeModal = () => {
     setSelectedCircleIdx(null);
+  };
+
+  const handleDelete = () => {
+    if (window.confirm("정말로 이 그래프를 삭제하시겠습니까?")) {
+      console.log(`Graph with id: ${params.id} would be deleted.`);
+      navigate("/");
+    }
+  };
+
+  const handleEdit = () => {
+    navigate(`/edit/${params.id}`);
+  };
+
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+    setLikeCount(isLiked ? likeCount - 1 : likeCount + 1);
   };
 
   if (!lifeGraph) {
@@ -84,6 +106,10 @@ export const Detail = () => {
               <img src="/assets/svgs/view.svg" alt={"view"} />
               <NormalSemiText>{lifeGraph.viewCount.toString()}</NormalSemiText>
             </ViewUserContainer>
+            <ActionButtonsContainer>
+              <ActionButton onClick={handleEdit}>수정</ActionButton>
+              <ActionButton onClick={handleDelete}>삭제</ActionButton>
+            </ActionButtonsContainer>
           </InfoContainer>
           <AISummaryContainer>
             <img src={"/assets/svgs/gemini.svg"} alt={"gemini"} />
@@ -111,7 +137,11 @@ export const Detail = () => {
           </LineCircleContainer>
         ))}
       </GraphContainer>
-      {/* <LikeButton graphId={params.id} likeCount={lifeGraph.like} iLike={lifeGraph.iLike} /> */}
+      <LikeButton
+        isLiked={isLiked}
+        likeCount={likeCount}
+        onLikeClick={handleLikeClick}
+      />
     </DetailWrapper>
   );
 };

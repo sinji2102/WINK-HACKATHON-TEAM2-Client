@@ -8,6 +8,7 @@ export const mockLifeGraphs = [
     tags: ['개발', '성장', '커리어'],
     thumbnail: '/assets/images/thumbnail1.png',
     primaryColor: 'red',
+    isLiked: true,
     content: '좌충우돌 저의 개발자 성장기입니다. 비전공자에서 시작해서 지금은 어엿한 3년차 개발자가 되기까지의 과정을 담았습니다.',
     nodes: [
       { level: 1, text: '비전공자', color: 'red', content: '컴퓨터 공학 지식이 전무한 상태에서 개발 공부를 시작했습니다. 막막했지만, 작은 목표부터 차근차근 해결해나갔습니다.' },
@@ -26,6 +27,7 @@ export const mockLifeGraphs = [
     tags: ['디자인', '기획', '이직'],
     thumbnail: '/assets/images/thumbnail2.png',
     primaryColor: 'cyan',
+    isLiked: false,
     content: '디자이너로 시작해 기획자로 커리어를 전환한 이야기입니다. 어떤 고민과 과정을 거쳤는지 공유합니다.',
     nodes: [
       { level: 2, text: '디자인 전공', color: 'cyan', content: '시각 디자인을 전공하며 사용자 중심의 사고방식을 길렀습니다. 미적 감각뿐만 아니라 문제 해결 과정을 배웠습니다.' },
@@ -43,6 +45,7 @@ export const mockLifeGraphs = [
     tags: ['데이터', '비전공자', '도전'],
     thumbnail: '/assets/images/thumbnail3.png',
     primaryColor: 'lime',
+    isLiked: false,
     content: '데이터의 "ㄷ"자도 모르던 제가 데이터 분석가로 취업하기까지의 과정을 담았습니다.',
     nodes: [
       { level: 1, text: '통계학 기초', color: 'lime', content: '데이터 분석의 기본이 되는 통계학 지식을 쌓기 위해 온라인 강의를 수강하고, 관련 서적을 탐독했습니다.' },
@@ -61,6 +64,7 @@ export const mockLifeGraphs = [
     tags: ['PM', '신입', '성장'],
     thumbnail: '/assets/images/thumbnail4.png',
     primaryColor: 'orange',
+    isLiked: false,
     content: '아무것도 모르던 신입 PM의 좌충우돌 1년차 회고록입니다.',
     nodes: [
       { level: 2, text: '인턴 시작', color: 'orange', content: 'IT 기업의 PM 인턴으로 사회생활을 시작했습니다. 회의록 작성, 자료 조사 등 기본적인 업무부터 배웠습니다.' },
@@ -78,6 +82,7 @@ export const mockLifeGraphs = [
     tags: ['창업', '스타트업', '경험'],
     thumbnail: '/assets/images/thumbnail5.png',
     primaryColor: 'purple',
+    isLiked: false,
     content: '아이디어 하나로 시작한 스타트업, 3년 간의 창업 스토리를 공유합니다.',
     nodes: [
       { level: 3, text: '아이디어 구상', color: 'purple', content: '일상 속 불편함을 해결하기 위한 아이디어를 구체화하고, 시장 조사를 통해 사업 가능성을 검토했습니다.' },
@@ -96,6 +101,7 @@ export const mockLifeGraphs = [
     tags: ['UIUX', '디자인', '포트폴리오'],
     thumbnail: '/assets/images/thumbnail6.png',
     primaryColor: 'lime',
+    isLiked: false,
     content: 'UI/UX 디자이너로 취업하기 위한 포트폴리오 제작 과정을 담았습니다.',
     nodes: [
       { level: 2, text: '컨셉 도출', color: 'lime', content: '나의 강점과 개성을 가장 잘 보여줄 수 있는 포트폴리오 컨셉을 정했습니다. 차별화된 스토리를 만들고 싶었습니다.' },

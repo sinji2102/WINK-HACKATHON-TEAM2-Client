@@ -14,6 +14,8 @@ const SearchResult = () => {
     const query = params.query.toLowerCase();
     const results = mockLifeGraphs.filter(graph =>
       graph.title.toLowerCase().includes(query) ||
+      graph.content.toLowerCase().includes(query) ||
+      graph.nodes.some(node => node.content.toLowerCase().includes(query)) ||
       graph.tags.some(tag => tag.toLowerCase().includes(query))
     );
     setGraphResults(results);

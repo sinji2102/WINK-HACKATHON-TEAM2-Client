@@ -1,15 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import * as S from "./Modal.styled";
 import TextField from "../components/TextField";
 import TextArea from "../../../components/commons/input/textArea/TextArea";
 
-const Modal = ({ modalClose, addCircleHandler }) => {
+const Modal = ({ modalClose, addCircleHandler, editCircleHandler, initialData, circleIndex }) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [content, setContent] = useState("");
   const [color, setColor] = useState("");
 
+  const isEditMode = initialData !== null;
+
   const COLOR_LIST = ["빨강", "주황", "연두", "파랑", "보라"];
+  const colorTranslationMap = {
+    red: "빨강",
+    orange: "주황",
+    lime: "연두",
+    cyan: "파랑",
+    purple: "보라",
+  };
+  const reverseColorTranslationMap = Object.fromEntries(Object.entries(colorTranslationMap).map(a => a.reverse()));
+
+
+  useEffect(() => {
+    if (isEditMode) {
+      setTitle(initialData.title);
+      setDate(initialData.date);
+      setContent(initialData.content);
+      setColor(reverseColorTranslationMap[initialData.colorType]);
+    }
+  }, [initialData, isEditMode]);
+
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -27,7 +48,7 @@ const Modal = ({ modalClose, addCircleHandler }) => {
     setColor(value);
   };
 
-  const addCircle = async () => {
+  const handleSubmit = async () => {
     if (title && date && content && color) {
       let translatedColor;
       switch (color) {
@@ -55,9 +76,14 @@ const Modal = ({ modalClose, addCircleHandler }) => {
         date: date,
         content: content,
         colorType: translatedColor,
+        level: initialData?.level // Preserve level on edit
       };
 
-      addCircleHandler(formData);
+      if (isEditMode) {
+        editCircleHandler(circleIndex, formData);
+      } else {
+        addCircleHandler(formData);
+      }
 
       modalClose();
     } else {
@@ -117,10 +143,10 @@ const Modal = ({ modalClose, addCircleHandler }) => {
         </S.LabelContainer>
         <S.Button
           onClick={() => {
-            addCircle();
+            handleSubmit();
           }}
         >
-          추가하기
+          {isEditMode ? "수정하기" : "추가하기"}
         </S.Button>
       </S.ModalContainer>
     </S.ModalWrapper>

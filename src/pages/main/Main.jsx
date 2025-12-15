@@ -18,11 +18,14 @@ import LifeGraphCard from "../../components/commons/lifeGraphCard/LIfeGraphCard.
 import { useNavigate } from "react-router-dom";
 import FloatingButton from "./components/FloatingButton.jsx";
 import { mockLifeGraphs } from "../../mock/lifeGraphs.js";
+import { Link } from "react-router-dom";
 
 const Main = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("사용자");
-  const [lifeGraphs, setLifeGraphs] = useState(mockLifeGraphs);
+  const [lifeGraphs, setLifeGraphs] = useState(
+    [...mockLifeGraphs].sort((a, b) => b.view - a.view)
+  );
 
   const handleLogout = () => {
     if (localStorage.getItem("token")) {
@@ -42,6 +45,7 @@ const Main = () => {
                 <P>님</P>
               </NameWrapper>
               <Welcome>환영합니다!</Welcome>
+              <Link to="/favorites">찜 목록 보기</Link>
             </WelcomeWrapper>
           </CarouselWrapper>
           <SearchBar />
