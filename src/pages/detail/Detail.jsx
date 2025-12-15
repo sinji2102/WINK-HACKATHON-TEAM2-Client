@@ -42,7 +42,7 @@ export const Detail = () => {
           title: node.text,
           color: node.color,
           level: node.level,
-          content: "임시 콘텐츠",
+          content: node.content,
         })),
       };
       setLifeGraph(graph);
