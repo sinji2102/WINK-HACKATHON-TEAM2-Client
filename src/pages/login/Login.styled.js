@@ -43,3 +43,23 @@ export const KakaoButtonWrapper = styled.button`
     ${({ theme }) => theme.fonts.body1_normal_semi};
   }
 `;
+
+export const AdminLinkContainer = styled.div`
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+
+  a, span {
+    ${({ theme }) => theme.fonts.caption1_medi};
+    color: ${({ theme }) => theme.colors.neutral70};
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+`;

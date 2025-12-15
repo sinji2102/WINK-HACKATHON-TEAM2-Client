@@ -8,6 +8,8 @@ import Detail from "../pages/detail/Detail.jsx";
 import KakaoCallback from "../pages/kakaoCallback/KakaoCallback.jsx";
 import Edit from "../pages/edit/Edit.jsx";
 import Favorites from "../pages/favorites/Favorites.jsx";
+import AdminLogin from "../pages/login/admin/AdminLogin.jsx";
+import AdminSignup from "../pages/signup/admin/AdminSignup.jsx";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +27,14 @@ const router = createBrowserRouter([
   {
     path: "/favorites",
     element: <Favorites />,
+  },
+  {
+    path: "/login/admin",
+    element: <AdminLogin />,
+  },
+  {
+    path: "/signup/admin",
+    element: <AdminSignup />,
   },
   {
     path: "/",
