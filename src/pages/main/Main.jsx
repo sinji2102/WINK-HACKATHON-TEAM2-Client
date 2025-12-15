@@ -1,6 +1,7 @@
 import {
   CarouselWrapper,
   LifeGraphCardWrapper,
+  LikeBtn,
   LogoutText,
   MainWrapper,
   NameWrapper,
@@ -45,7 +46,9 @@ const Main = () => {
                 <P>님</P>
               </NameWrapper>
               <Welcome>환영합니다!</Welcome>
-              <Link to="/favorites">찜 목록 보기</Link>
+              <LikeBtn>
+                <Link to="/favorites">찜 목록 보기</Link>
+              </LikeBtn>
             </WelcomeWrapper>
           </CarouselWrapper>
           <SearchBar />

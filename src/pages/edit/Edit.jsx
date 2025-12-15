@@ -29,7 +29,7 @@ const Edit = () => {
         content: node.content,
         colorType: node.color,
         level: node.level,
-        date: "2023-01-01" // placeholder
+        date: node.date
       }));
       setAllCircle(circles);
     } else {

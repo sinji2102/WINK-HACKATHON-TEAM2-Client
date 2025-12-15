@@ -3,7 +3,13 @@ import * as S from "./Modal.styled";
 import TextField from "../components/TextField";
 import TextArea from "../../../components/commons/input/textArea/TextArea";
 
-const Modal = ({ modalClose, addCircleHandler, editCircleHandler, initialData, circleIndex }) => {
+const Modal = ({
+  modalClose,
+  addCircleHandler,
+  editCircleHandler,
+  initialData,
+  circleIndex,
+}) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [content, setContent] = useState("");
@@ -19,8 +25,9 @@ const Modal = ({ modalClose, addCircleHandler, editCircleHandler, initialData, c
     cyan: "파랑",
     purple: "보라",
   };
-  const reverseColorTranslationMap = Object.fromEntries(Object.entries(colorTranslationMap).map(a => a.reverse()));
-
+  const reverseColorTranslationMap = Object.fromEntries(
+    Object.entries(colorTranslationMap).map((a) => a.reverse())
+  );
 
   useEffect(() => {
     if (isEditMode) {
@@ -30,7 +37,6 @@ const Modal = ({ modalClose, addCircleHandler, editCircleHandler, initialData, c
       setColor(reverseColorTranslationMap[initialData.colorType]);
     }
   }, [initialData, isEditMode]);
-
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -76,7 +82,7 @@ const Modal = ({ modalClose, addCircleHandler, editCircleHandler, initialData, c
         date: date,
         content: content,
         colorType: translatedColor,
-        level: initialData?.level // Preserve level on edit
+        level: initialData?.level, // Preserve level on edit
       };
 
       if (isEditMode) {

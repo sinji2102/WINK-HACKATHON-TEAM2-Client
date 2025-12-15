@@ -48,6 +48,7 @@ export const InputTitle = styled.div`
   display: flex;
   ${({ theme }) => theme.fonts.body1_long};
   margin-bottom: 0.6rem;
+  color: black;
 `;
 
 export const LabelContainer = styled.button`

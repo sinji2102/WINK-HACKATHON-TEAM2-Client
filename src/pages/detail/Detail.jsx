@@ -48,7 +48,7 @@ export const Detail = () => {
           color: node.color,
           level: node.level,
           content: node.content,
-          date: "2023-01-01", // Placeholder date
+          date: node.date,
         })),
       };
       setLifeGraph(graph);
@@ -95,7 +95,7 @@ export const Detail = () => {
           closeBtn={closeModal}
         />
       )}
-      <StickyWrapper>
+      <StickyWrapper $isLiked={isLiked}>
         <Header title={lifeGraph.title} />
         <DescriptionWrapper>
           <InfoContainer>
@@ -107,18 +107,17 @@ export const Detail = () => {
               <img src="/assets/svgs/view.svg" alt={"view"} />
               <NormalSemiText>{lifeGraph.viewCount.toString()}</NormalSemiText>
             </ViewUserContainer>
-            <ActionButtonsContainer>
-              <ActionButton onClick={handleEdit}>수정</ActionButton>
-              <ActionButton onClick={handleDelete}>삭제</ActionButton>
-            </ActionButtonsContainer>
           </InfoContainer>
           <AISummaryContainer>
-            <img src={"/assets/svgs/gemini.svg"} alt={"gemini"} />
-            <SummaryTitle>의 한 문장 요약</SummaryTitle>
+            <SummaryTitle>한 문장 요약</SummaryTitle>
           </AISummaryContainer>
           <DescriptionContainer>
             <NormalSemiText>{lifeGraph.summary}</NormalSemiText>
           </DescriptionContainer>
+          <ActionButtonsContainer>
+            <ActionButton onClick={handleEdit}>수정</ActionButton>
+            <ActionButton onClick={handleDelete}>삭제</ActionButton>
+          </ActionButtonsContainer>
         </DescriptionWrapper>
         <Divider />
       </StickyWrapper>
