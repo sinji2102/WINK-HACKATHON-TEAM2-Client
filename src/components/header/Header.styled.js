@@ -9,8 +9,6 @@ export const HeaderWrapper = styled.section`
   background-color: #fffff7;
   flex-direction: row;
   align-items: center;
-
-  box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.25);
 `;
 
 export const Arrow = styled.button`

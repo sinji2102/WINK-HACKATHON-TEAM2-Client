@@ -1,5 +1,5 @@
 import {EmptyText, LifeGraphCardWrapper, SearchResultWrapper, StickyWrapper} from "./SearchResult.styled.js";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import LifeGraphCard from "../../components/commons/lifeGraphCard/LIfeGraphCard.jsx";
 import Header from "../../components/header/Header.jsx";
@@ -7,7 +7,6 @@ import { mockLifeGraphs } from "../../mock/lifeGraphs.js";
 
 const SearchResult = () => {
   const params = useParams();
-  const navigate = useNavigate();
   const [graphResults, setGraphResults] = useState([]);
 
   useEffect(() => {
@@ -41,6 +40,7 @@ const SearchResult = () => {
                 like={data.like}
                 tags={data.tags}
                 thumbnail={data.thumbnail}
+                primaryColor={data.primaryColor}
               />
             ))
           }

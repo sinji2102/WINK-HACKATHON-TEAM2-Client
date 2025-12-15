@@ -15,6 +15,7 @@ import {
   ViewUserContainer,
   ActionButtonsContainer,
   ActionButton,
+  Spacer,
 } from "./Detail.styled.js";
 import GraphCircle from "./components/GraphCircle.jsx";
 import { Divider } from "../register/Register.styled.js";
@@ -136,6 +137,7 @@ export const Detail = () => {
             </CircleContainer>
           </LineCircleContainer>
         ))}
+        <Spacer />
       </GraphContainer>
       <LikeButton
         isLiked={isLiked}

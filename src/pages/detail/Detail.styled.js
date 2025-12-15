@@ -116,3 +116,7 @@ export const ActionButton = styled.button`
     background-color: ${({ theme }) => theme.colors.neutral95};
   }
 `;
+
+export const Spacer = styled.div`
+  height: 10rem;
+`;

@@ -9,7 +9,7 @@ const Modal = ({ modalClose, addCircleHandler, editCircleHandler, initialData, c
   const [content, setContent] = useState("");
   const [color, setColor] = useState("");
 
-  const isEditMode = initialData !== null;
+  const isEditMode = !!initialData;
 
   const COLOR_LIST = ["빨강", "주황", "연두", "파랑", "보라"];
   const colorTranslationMap = {
